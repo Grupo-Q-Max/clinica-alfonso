@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Lato', sans-serif; margin: 0; padding: 0; background-color: #F5F7F9; }
+        .container { max-width: 600px; margin: 20px auto; background-color: #FCFCFC; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border-top: 5px solid #C0B283; }
+        .header { background-color: #30414B; padding: 30px; text-align: center; }
+        .header img { height: 80px; filter: brightness(0) invert(1); }
+        .content { padding: 40px 30px; text-align: center; color: #5c5c5c; font-size: 18px; line-height: 1.8; }
+        .content h1 { font-family: 'Playfair Display', serif; color: #30414B; font-size: 32px; margin-bottom: 20px; }
+        .token-box {
+            display: inline-block;
+            background-color: #F5F7F9;
+            color: #30414B;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 36px;
+            font-weight: 700;
+            letter-spacing: 10px;
+            margin: 20px 0;
+            border: 2px dashed #EAEAEA;
+        }
+        .footer { padding: 20px; text-align: center; font-size: 12px; color: #aaa; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="https://clinicaalfonso.com.br/imagens/logo_sem_fundo1.png" alt="Logo Clínica Alfonso">
+        </div>
+        <div class="content">
+            <h1>Olá, {{NOME_USUARIO}}!</h1>
+            <p>Para continuar com sua solicitação, utilize o código de verificação abaixo. Este código é válido por 10 minutos.</p>
+            <div class="token-box">{{TOKEN}}</div>
+            <p style="font-size: 14px;">Se você não solicitou este código, pode ignorar este e-mail com segurança.</p>
+        </div>
+        <div class="footer">
+            <p>&copy; 2025 Clínica Alfonso Rewards. Todos os direitos reservados.</p>
+        </div>
+    </div>
+</body>
+</html>

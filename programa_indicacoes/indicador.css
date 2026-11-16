@@ -1,0 +1,404 @@
+/* ================================================================= */
+/* === ARQUIVO CSS FINAL E PERFEITO - Copie e cole tudo abaixo === */
+/* ================================================================= */
+
+/* --- RAÍZ: TEMA PADRONIZADO "CLÍNICA ALFONSO" --- */
+:root {
+  --dark-teal: #30414b;
+  --ivory-white: #fcfcfc;
+  --soft-gold: #c0b283;
+  --text-primary: #2c2c2c;
+  --text-secondary: #5c5c5c;
+  --section-bg: #f5f7f9;
+  --border-color: #eaeaea;
+  --success-color: #2e7d32;
+  --warning-color: #ed6c02;
+  --error-color: #d32f2f;
+  --heading-font: "Playfair Display", serif;
+  --body-font: "Lato", sans-serif;
+  --shadow-soft: 0 5px 20px rgba(48, 65, 75, 0.07);
+  --shadow-medium: 0 12px 35px rgba(48, 65, 75, 0.1);
+  --transition: 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+/* --- ESTILOS GERAIS DA PÁGINA "INDICADOR" --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: var(--body-font);
+  background-color: var(--section-bg);
+  color: var(--text-primary);
+  font-size: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.dashboard-main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 5%;
+}
+
+/* --- SEÇÃO DE BOAS-VINDAS --- */
+.welcome-section {
+  background: var(--dark-teal);
+  color: var(--ivory-white);
+  padding: 4rem;
+  border-radius: 20px;
+  margin-bottom: 3rem;
+  box-shadow: var(--shadow-medium);
+}
+.welcome-content h1 {
+  font-family: var(--heading-font);
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+.wave {
+  display: inline-block;
+  animation: wave-animation 2s infinite;
+  transform-origin: 70% 70%;
+}
+.welcome-content p {
+  font-size: 1.3rem;
+  color: rgba(252, 252, 252, 0.8);
+  max-width: 600px;
+  margin-bottom: 2rem;
+}
+.btn-primary {
+  background-color: var(--dark-teal);
+  color: var(--ivory-white);
+  padding: 1rem 2.5rem;
+  border: 2px solid var(--dark-teal);
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.1rem;
+  letter-spacing: 0.5px;
+  transition: all var(--transition);
+  cursor: pointer;
+  display: inline-block;
+}
+.btn-primary:hover {
+  background-color: var(--soft-gold);
+  border-color: var(--soft-gold);
+  color: var(--dark-teal);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(192, 178, 131, 0.3);
+}
+.btn-indicate {
+  background-color: var(--soft-gold);
+  border-color: var(--soft-gold);
+  color: var(--dark-teal);
+}
+.btn-indicate:hover {
+  background-color: var(--ivory-white);
+  border-color: var(--ivory-white);
+}
+.btn-indicate i {
+  margin-right: 0.5rem;
+}
+
+/* --- SEÇÃO DO LINK DE INDICAÇÃO (MOBILE-FIRST) --- */
+.referral-link-section {
+  background: var(--ivory-white);
+  padding: 2rem 1.5rem;
+  border-radius: 20px;
+  box-shadow: var(--shadow-soft);
+  text-align: center;
+  margin-bottom: 3rem;
+  border: 1px solid var(--border-color);
+}
+.referral-link-section h2 {
+  font-family: var(--heading-font);
+  font-size: 1.5rem;
+  color: var(--dark-teal);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+.referral-link-section p {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto 1.5rem auto;
+}
+.link-box {
+  display: flex;
+  flex-direction: column; /* Padrão para celular: empilhado */
+  max-width: 500px;
+  margin: 0 auto;
+}
+.link-box input {
+  flex-grow: 1;
+  padding: 1rem;
+  font-size: 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 8px 8px 0 0; /* Cantos para layout empilhado */
+  background-color: var(--section-bg);
+  color: var(--text-secondary);
+  text-align: center;
+  /* Evita que o texto quebre no meio do link */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  /* --- ADIÇÕES FINAIS E DEFINITIVAS --- */
+  width: 100%;      /* Garante que ele ocupe o espaço do pai */
+  min-width: 0;       /* O código mágico: permite que o input encolha infinitamente */
+}
+/* ======================================================= */
+/* === CORES DOS ÍCONES DOS CARDS DE RESUMO === */
+/* ======================================================= */
+
+.card-icon {
+  /* Cor padrão para o ícone "Total" */
+  color: var(--soft-gold);
+}
+
+.card-icon.warning {
+  color: #5F7381;
+}
+
+.card-icon.success {
+  /* Cor verde para "Aceitas" */
+  color: var(--success-color);
+}
+
+.card-icon.error {
+  /* Cor vermelha para "Recusadas" */
+  color: var(--error-color);
+}
+.copy-button {
+  background-color: var(--dark-teal);
+  color: var(--ivory-white);
+  border: none;
+  padding: 0.8rem 1.5rem;
+  font-weight: 700;
+  cursor: pointer;
+  border-radius: 0 0 8px 8px; /* Cantos para layout empilhado */
+  transition: background-color var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: -1px;
+
+  /* --- A LINHA DA SOLUÇÃO DEFINITIVA --- */
+  width: 100%;
+}
+.copy-button:hover {
+  background-color: var(--soft-gold);
+  color: var(--dark-teal);
+}
+#copy-success {
+  color: var(--success-color);
+  font-weight: 700;
+  margin-top: 1rem;
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+#copy-success.visible {
+  opacity: 1;
+}
+.share-buttons {
+  margin-top: 1.5rem;
+}
+.share-buttons p {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+.share-btn-group {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+.share-btn {
+  font-size: 1.5rem;
+  color: var(--text-secondary);
+  transition: color var(--transition), transform var(--transition);
+}
+.share-btn:hover {
+  transform: scale(1.2);
+}
+.share-btn.whatsapp:hover { color: #25d366; }
+.share-btn.telegram:hover { color: #0088cc; }
+.share-btn.email:hover { color: #d34836; }
+
+/* --- SEÇÃO DE RESUMO --- */
+.summary-section {
+  display: grid;
+  grid-template-columns: 1fr; /* Padrão para celular: 1 coluna */
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+.summary-card {
+  background: var(--ivory-white);
+  padding: 1.5rem;
+  border-radius: 16px;
+  box-shadow: var(--shadow-soft);
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  cursor: pointer;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+.summary-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-medium);
+}
+.card-icon {
+  font-size: 2rem;
+}
+.card-content h3 {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.25rem;
+  font-weight: 700;
+}
+.card-content span {
+  font-family: var(--heading-font);
+  font-size: 2rem;
+  color: var(--dark-teal);
+}
+
+/* --- SEÇÃO FINANCEIRA --- */
+.financial-section {
+  display: grid;
+  grid-template-columns: 1fr; /* Padrão para celular: 1 coluna */
+  gap: 1.5rem;
+}
+.financial-card {
+  background: var(--ivory-white);
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: var(--shadow-soft);
+  text-align: center;
+}
+.financial-card h3 {
+  font-size: 1.1rem;
+}
+.financial-card .amount {
+  font-size: 2.5rem;
+  margin: 0.5rem 0;
+}
+.description {
+  font-size: 0.9rem;
+}
+
+/* --- MODAIS (Pop-ups) --- */
+.modal-overlay {
+  position: fixed; inset: 0;
+  background: rgba(48, 65, 75, 0.6);
+  backdrop-filter: blur(5px);
+  display: none; justify-content: center; align-items: center;
+  z-index: 2000;
+}
+.modal-overlay.active { display: flex; }
+.modal-content {
+  background: var(--ivory-white); padding: 2.5rem;
+  border-radius: 16px; box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+  width: 90%; max-width: 800px; max-height: 80vh;
+  overflow-y: auto; position: relative;
+}
+.close-modal {
+  position: absolute; top: 15px; right: 20px;
+  font-size: 2rem; color: var(--text-secondary);
+  cursor: pointer; transition: transform 0.3s;
+}
+.close-modal:hover { transform: scale(1.2); }
+.modal-title {
+  font-family: var(--heading-font); font-size: 1.8rem;
+  color: var(--dark-teal); margin-bottom: 1.5rem; text-align: center;
+}
+.table-responsive { width: 100%; overflow-x: auto; }
+.indications-table { width: 100%; border-collapse: collapse; }
+.indications-table th, .indications-table td {
+  padding: 1rem; text-align: left;
+  border-bottom: 1px solid var(--border-color);
+}
+.indications-table th { font-weight: 700; color: var(--text-secondary); }
+.no-indications { text-align: center; padding: 2rem; color: var(--text-secondary); font-size: 1.1rem; }
+.status {
+  padding: 5px 12px; border-radius: 20px;
+  font-size: 0.9rem; font-weight: 700;
+}
+.status-aprovada, .status-fechada { background-color: #e8f5e9; color: var(--success-color); }
+.status-ativa { background-color: #fff3e0; color: var(--warning-color); }
+.status-rejeitada { background-color: #ffebee; color: var(--error-color); }
+
+/* --- ANIMAÇÃO WAVE --- */
+@keyframes wave-animation {
+  0% { transform: rotate(0deg); } 15% { transform: rotate(14deg); }
+  30% { transform: rotate(-8deg); } 40% { transform: rotate(14deg); }
+  50% { transform: rotate(-4deg); } 60% { transform: rotate(10deg); }
+  70% { transform: rotate(0deg); } 100% { transform: rotate(0deg); }
+}
+
+/* ======================================================= */
+/* === RESPONSIVIDADE - PONTOS DE TRANSIÇÃO (BREAKPOINTS) === */
+/* ======================================================= */
+
+/* --- AJUSTE PARA CELULARES GRANDES (Ex: iPhone Plus na horizontal) --- */
+@media (min-width: 550px) {
+  /* Restaura o layout lado a lado para o link de indicação */
+  .link-box {
+    flex-direction: row;
+  }
+  .link-box input {
+    border-radius: 8px 0 0 8px;
+    text-align: left;
+  }
+  .copy-button {
+    border-radius: 0 8px 8px 0;
+    margin-top: 0;
+    padding: 0 1.5rem;
+  }
+  .summary-section {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* --- AJUSTES PARA TABLETS --- */
+@media (min-width: 768px) {
+  .dashboard-main { padding: 2rem 5%; }
+  .welcome-section { padding: 2.5rem; }
+  .welcome-content h1 { font-size: 2.5rem; }
+  .referral-link-section { padding: 3rem; }
+  .referral-link-section h2 { font-size: 2rem; }
+  .referral-link-section p { font-size: 1.2rem; }
+  .financial-section { grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+  .financial-card { padding: 2.5rem; }
+  .financial-card .amount { font-size: 3.5rem; }
+  .modal-title { font-size: 2rem; }
+}
+
+/* --- AJUSTES PARA DESKTOPS --- */
+@media (min-width: 1024px) {
+  .summary-section {
+    grid-template-columns: repeat(4, 1fr);
+    margin-bottom: 5rem;
+  }
+  .summary-card { padding: 2rem; }
+  .card-icon { font-size: 2.5rem; }
+  .card-content h3 { font-size: 1.1rem; }
+  .card-content span { font-size: 2.5rem; }
+}
+.welcome-content .btn-indicate {
+    /* Adiciona um espaço acima do botão para não ficar colado no texto */
+    margin-top: 1.5rem; 
+
+    /* Estas propriedades forçam o botão a ser visível, 
+       anulando qualquer animação GSAP que o esconda. */
+    opacity: 1 !important;
+    transform: none !important;
+    visibility: visible !important;
+}

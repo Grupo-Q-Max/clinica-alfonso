@@ -1,0 +1,238 @@
+/* --- RAÍZ: TEMA PADRONIZADO "CLÍNICA ALFONSO" --- */
+:root {
+  --dark-teal: #30414b;
+  --ivory-white: #fcfcfc;
+  --soft-gold: #c0b283;
+  --text-primary: #2c2c2c;
+  --text-secondary: #5c5c5c;
+  --section-bg: #f5f7f9;
+  --border-color: #eaeaea;
+  --heading-font: "Playfair Display", serif;
+  --body-font: "Lato", sans-serif;
+  --shadow-soft: 0 5px 20px rgba(48, 65, 75, 0.07);
+  --shadow-medium: 0 12px 35px rgba(48, 65, 75, 0.1);
+  --transition: 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+/* --- ESTILOS GERAIS DA PÁGINA "SOBRE" --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: var(--body-font);
+  background-color: var(--ivory-white);
+  color: var(--text-primary);
+  font-size: 110%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* --- HERO DA PÁGINA "SOBRE" --- */
+.hero-sobre {
+  background-color: var(--dark-teal);
+  color: var(--ivory-white);
+  text-align: center;
+  padding: 8rem 5%;
+}
+.hero-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+.hero-title {
+  font-family: var(--heading-font);
+  font-size: clamp(3rem, 6vw, 4.5rem);
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+}
+.hero-subtitle {
+  font-size: clamp(1.1rem, 3vw, 1.4rem);
+  font-weight: 300;
+  opacity: 0.9;
+  line-height: 1.8;
+}
+
+/* --- COMPONENTES GERAIS DE SEÇÃO --- */
+.section-container {
+  padding: 120px 5%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.section-bg {
+  background-color: var(--section-bg);
+}
+.section-header {
+  text-align: center;
+  margin-bottom: 5rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.section-title {
+  font-family: var(--heading-font);
+  font-size: clamp(2.8rem, 5vw, 3.5rem);
+  color: var(--dark-teal);
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+.section-subtitle {
+  font-size: 1.3rem;
+  color: var(--text-secondary);
+  line-height: 1.8;
+}
+
+/* --- GRID DE TRATAMENTOS --- */
+.treatments-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+.treatment-card {
+  background: var(--ivory-white);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 2.5rem;
+  text-align: center;
+  box-shadow: var(--shadow-soft);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+.treatment-card:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--shadow-medium);
+}
+.treatment-icon {
+  font-size: 3rem;
+  color: var(--soft-gold);
+  margin-bottom: 1.5rem;
+}
+.treatment-card h4 {
+  font-family: var(--heading-font);
+  font-size: 1.6rem;
+  color: var(--dark-teal);
+  margin-bottom: 1rem;
+}
+.treatment-card p {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+/* --- CARD DE CTA --- */
+.cta-card {
+  background-color: var(--dark-teal);
+  color: var(--ivory-white);
+  border-radius: 20px;
+  padding: 4rem 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 3rem;
+  box-shadow: 0 20px 50px rgba(48, 65, 75, 0.2);
+}
+.cta-content {
+  flex-basis: 60%;
+}
+.cta-title {
+  font-family: var(--heading-font);
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+.cta-content p {
+  font-size: 1.2rem;
+  opacity: 0.9;
+  margin-bottom: 2rem;
+}
+.btn-primary {
+  background-color: var(--soft-gold);
+  border-color: var(--soft-gold);
+  color: var(--dark-teal);
+  padding: 1rem 2.5rem;
+  font-size: 1.1rem;
+}
+.btn-primary:hover {
+  background-color: var(--ivory-white);
+  border-color: var(--ivory-white);
+}
+.cta-visual {
+  font-size: 8rem;
+  color: rgba(255, 255, 255, 0.1);
+  transform: rotate(-15deg);
+}
+
+/* --- LISTA DE BENEFÍCIOS --- */
+.benefits-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.benefit-item {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  background-color: var(--ivory-white);
+  padding: 2rem;
+  border-radius: 16px;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-soft);
+}
+.benefit-icon {
+  font-size: 2.5rem;
+  color: var(--soft-gold);
+  padding: 1.5rem;
+  background-color: var(--section-bg);
+  border-radius: 50%;
+}
+.benefit-text h3 {
+  font-family: var(--heading-font);
+  font-size: 1.6rem;
+  color: var(--dark-teal);
+  margin-bottom: 0.5rem;
+}
+.benefit-text p {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+/* --- RESPONSIVIDADE --- */
+@media (max-width: 768px) {
+  .section-container {
+    padding: 80px 5%;
+  }
+  .hero-sobre {
+    padding: 6rem 5%;
+  }
+  .cta-card {
+    flex-direction: column;
+    text-align: center;
+  }
+  .cta-visual {
+    font-size: 6rem;
+    margin-top: 2rem;
+  }
+  .benefit-item {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

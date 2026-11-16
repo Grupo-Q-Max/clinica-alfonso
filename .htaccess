@@ -1,0 +1,17 @@
+# Proteção de arquivos confidenciais e backups
+<FilesMatch "^(\.env|\.ftpquota|passwd|shadow|quota|.*\.db.*|.*\.zip|.*\.sql|.*\.log|composer\.(json|lock))$">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order deny,allow
+        Deny from all
+    </IfModule>
+</FilesMatch>
+
+# Impede listagem de diretórios
+Options -Indexes
+
+# php -- BEGIN cPanel-generated handler, do not edit
+# Este domínio herda o pacote “PHP”.
+# php -- END cPanel-generated handler, do not edit

@@ -1,0 +1,345 @@
+/* --- RAÍZ: TEMA PADRONIZADO "CLÍNICA ALFONSO" --- */
+:root {
+  --dark-teal: #30414b;
+  --ivory-white: #fcfcfc;
+  --soft-gold: #c0b283;
+  --text-primary: #2c2c2c;
+  --text-secondary: #5c5c5c;
+  --section-bg: #f5f7f9;
+  --border-color: #eaeaea;
+  --success-color: #28a745;
+  --danger-color: #dc3545;
+  --info-color: #17a2b8;
+  --warning-color: #ffc107;
+  --heading-font: "Playfair Display", serif;
+  --body-font: "Lato", sans-serif;
+  --shadow-soft: 0 5px 20px rgba(48, 65, 75, 0.07);
+  --shadow-medium: 0 12px 35px rgba(48, 65, 75, 0.1);
+  --transition: 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+/* --- ESTILOS GERAIS --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body.admin-body {
+  font-family: var(--body-font);
+  background-color: var(--section-bg);
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+.main-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem 5%;
+  margin-top: 90px; /* Adicionado para evitar que o conteúdo fique sob o header fixo */
+}
+
+/* --- CABEÇALHO E BARRA DE AÇÕES --- */
+.page-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.page-header h1 {
+  font-family: var(--heading-font);
+  color: var(--dark-teal);
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  margin-bottom: 0.5rem;
+}
+.page-header p {
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+}
+
+.alert {
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  border-radius: 8px;
+  font-weight: 700;
+  border: 1px solid transparent;
+}
+.alert.success {
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+  color: #155724;
+}
+.alert.error {
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+  color: #721c24;
+}
+
+.actions-bar {
+  margin-bottom: 2rem;
+  background-color: var(--ivory-white);
+  padding: 0.75rem;
+  border-radius: 12px;
+  box-shadow: var(--shadow-soft);
+  border: 1px solid var(--border-color);
+}
+.filter-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+.filter-button {
+  flex-grow: 1;
+  padding: 0.8rem 1rem;
+  text-align: center;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  background-color: var(--section-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  transition: all var(--transition);
+}
+.filter-button:hover {
+  background-color: var(--soft-gold);
+  color: var(--dark-teal);
+  border-color: var(--soft-gold);
+}
+.filter-button.active {
+  background-color: var(--dark-teal);
+  color: var(--ivory-white);
+  border-color: var(--dark-teal);
+  box-shadow: var(--shadow-soft);
+}
+
+/* --- TABELA DE DADOS --- */
+.table-container {
+  background-color: var(--ivory-white);
+  border-radius: 16px;
+  box-shadow: var(--shadow-soft);
+  overflow-x: auto;
+  border: 1px solid var(--border-color);
+}
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 1200px;
+}
+.data-table th,
+.data-table td {
+  padding: 1rem;
+  text-align: left;
+  vertical-align: middle;
+  border-bottom: 1px solid var(--border-color);
+}
+.data-table thead {
+  border-bottom: 2px solid var(--border-color);
+}
+.data-table th {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+}
+.data-table tbody tr:last-child td {
+  border-bottom: none;
+}
+.data-table tbody tr:hover {
+  background-color: var(--section-bg);
+}
+.data-table td strong {
+  color: var(--dark-teal);
+}
+.data-table td small {
+  color: var(--text-secondary);
+  display: block;
+}
+.no-results {
+  text-align: center;
+  padding: 3rem;
+  color: var(--text-secondary);
+}
+
+.servico-item {
+  background-color: var(--section-bg);
+  color: var(--text-secondary);
+  padding: 0.2rem 0.6rem;
+  border-radius: 5px;
+  display: inline-block;
+  font-size: 0.85rem;
+  margin-top: 4px;
+}
+.status-badge {
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--ivory-white);
+  text-align: center;
+  min-width: 120px;
+  display: inline-block;
+}
+.status-badge.status-ativa {
+  background-color: var(--info-color);
+}
+.status-badge.status-indicacao_boa {
+  background-color: var(--warning-color);
+  color: var(--text-primary);
+}
+.status-badge.status-proposta_enviada {
+  background-color: var(--soft-gold);
+  color: var(--dark-teal);
+}
+.status-badge.status-fechada {
+  background-color: var(--success-color);
+}
+.status-badge.status-rejeitada {
+  background-color: var(--danger-color);
+}
+
+.status-select {
+  font-family: var(--body-font);
+  padding: 0.6rem;
+  border: 1px solid var(--border-color);
+  background-color: var(--ivory-white);
+  border-radius: 8px;
+  width: 100%;
+  min-width: 150px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+/* --- MODAIS (POP-UPS) --- */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(48, 65, 75, 0.7);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+.modal-content {
+  background: var(--ivory-white);
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: var(--shadow-medium);
+  width: 100%;
+  max-width: 600px;
+  animation: modal-fade-in 0.5s var(--transition);
+}
+@keyframes modal-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 1rem;
+  margin-bottom: 1.5rem;
+}
+.modal-title {
+  font-family: var(--heading-font);
+  font-size: 1.8rem;
+  color: var(--dark-teal);
+}
+.close-modal {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+}
+.modal-body {
+  max-height: 60vh;
+  overflow-y: auto;
+}
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.btn-primary,
+.btn-secondary {
+  padding: 0.7rem 1.5rem;
+  font-weight: 700;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+.btn-primary {
+  background-color: var(--soft-gold);
+  color: var(--dark-teal);
+}
+.btn-primary:hover {
+  background-color: #a89a71;
+}
+.btn-secondary {
+  background-color: var(--section-bg);
+  color: var(--text-secondary);
+  border-color: var(--border-color);
+}
+
+/* Estilos para lista de serviços no modal */
+#servicos-list-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1rem;
+  max-height: 250px;
+  overflow-y: auto;
+}
+.checkbox-item {
+  display: flex;
+  align-items: center;
+}
+.checkbox-item input[type="checkbox"] {
+  width: 1.2em;
+  height: 1.2em;
+  margin-right: 0.75rem;
+  accent-color: var(--dark-teal);
+  cursor: pointer;
+}
+.checkbox-item label {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+  cursor: pointer;
+}
+.cashback-value {
+  font-weight: 700;
+  color: var(--success-color);
+}
+
+.total-display {
+  margin-top: 1.5rem;
+  font-size: 1.2rem;
+}
+.total-display .amount {
+  font-weight: 700;
+  color: var(--dark-teal);
+}
+.bonus-info {
+  margin-top: 1rem;
+  background-color: var(--section-bg);
+  padding: 0.75rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}

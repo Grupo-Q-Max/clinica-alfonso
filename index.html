@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clínica Alfonso | Odontologia de Excelência no Tatuapé</title>
+    <meta name="description" content="Clínica Alfonso: Odontologia de excelência no Tatuapé, São Paulo. Implantes dentários, lentes de contato, clareamento dental e odontologia estética com precisão digital e cuidado acolhedor.">
+    
+    <!-- Open Graph / Redes Sociais & WhatsApp -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Clínica Alfonso | Odontologia de Excelência no Tatuapé">
+    <meta property="og:description" content="Combinamos tecnologia, precisão e cuidado humano para revelar a sua melhor expressão. Agende sua consulta.">
+    <meta property="og:image" content="imagens/hero_poster.jpg">
+    <meta property="og:url" content="https://www.clinicaalfonso.com.br/">
+
+    <link rel="icon" type="image/png" sizes="16x16" href="imagens/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="imagens/favicon-32x32.png">
+    <link rel="apple-touch-icon" href="imagens/apple-touch-icon.png">
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Tipografia de Luxo: Cormorant Garamond & Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+
+    <div class="preloader">
+        <img src="imagens/logo_sem_fundo.png" alt="Logo Clínica Alfonso">
+    </div>
+
+    <header class="header">
+        <nav class="navbar">
+            <a href="#inicio" class="nav-logo" aria-label="Início - Clínica Alfonso">
+                <img src="imagens/logo_sem_fundo.png" alt="Logo Clínica Alfonso">
+            </a>
+            <div class="nav-menu">
+                <a href="#sobre" class="nav-link">A Clínica</a>
+                <a href="#servicos" class="nav-link">Tratamentos</a>
+                <a href="#experiencia" class="nav-link">Experiência</a>
+                <a href="#abordagem" class="nav-link">Nossa Abordagem</a>
+                <a href="#faq" class="nav-link">Dúvidas</a>
+                <a href="https://agenda.link/92198" target="_blank" rel="noopener" class="nav-link">Agendamentos</a>
+                <a href="programa_indicacoes/index.php" class="nav-link">Alfonso Rewards</a>
+                <a href="#contato" class="nav-link">Contato</a>
+            </div>
+            <div class="hamburger" aria-label="Menu principal" role="button" tabindex="0">
+                <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+            </div>
+        </nav>
+    </header>
+
+    <div class="mobile-nav-overlay" id="mobile-menu">
+        <a href="#sobre" class="mobile-nav-link">A Clínica</a>
+        <a href="#servicos" class="mobile-nav-link">Tratamentos</a>
+        <a href="#experiencia" class="mobile-nav-link">Experiência</a>
+        <a href="#abordagem" class="mobile-nav-link">Nossa Abordagem</a>
+        <a href="#faq" class="mobile-nav-link">Dúvidas</a>
+        <a href="https://agenda.link/92198" target="_blank" rel="noopener" class="mobile-nav-link">Agendamentos</a>
+        <a href="programa_indicacoes/index.php" class="mobile-nav-link">Alfonso Rewards</a>
+        <a href="#contato" class="mobile-nav-link">Contato</a>
+        <a href="https://agenda.link/92198" target="_blank" rel="noopener" class="btn-primary mobile-menu-cta">
+            <i class="fas fa-calendar-check"></i> Agendar Consulta
+        </a>
+    </div>
+
+    <main>
+
+        <!-- Seção Hero com Vídeo Real da Clínica Otimizado -->
+        <section id="inicio" class="hero">
+            <div class="hero-video-wrapper">
+                <video autoplay loop muted playsinline preload="auto" class="hero-video" poster="imagens/hero_poster.jpg">
+                    <source src="imagens/hero_background.mp4" type="video/mp4">
+                    Seu navegador não suporta vídeos.
+                </video>
+            </div>
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <span class="hero-badge">ODONTOLOGIA BOUTIQUE &bull; TATUAPÉ</span>
+                <h1 class="hero-title">A arte de esculpir <em>sorrisos perfeitos</em>.</h1>
+                <p class="hero-subtitle">Combinamos tecnologia digital, precisão estética e um acolhimento caloroso para revelar a sua melhor expressão com naturalidade.</p>
+                <div class="hero-actions">
+                    <a href="https://agenda.link/92198" target="_blank" rel="noopener" class="btn-primary btn-hero">Agende sua Consulta</a>
+                    <a href="#sobre" class="btn-secondary btn-hero">Conheça a Clínica</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Faixa de Prestígio e Tecnologias (Ticker Bar) -->
+        <div class="prestige-ticker">
+            <div class="ticker-track">
+                <div class="ticker-item"><i class="fa-solid fa-gem"></i> Porcelanas & Lentes E-Max</div>
+                <div class="ticker-item"><i class="fa-solid fa-cube"></i> Scanner Intraoral 3D</div>
+                <div class="ticker-item"><i class="fa-solid fa-microscope"></i> Diagnóstico Digital de Alta Definição</div>
+                <div class="ticker-item"><i class="fa-solid fa-couch"></i> Ambiente VIP & Acolhedor</div>
+                <div class="ticker-item"><i class="fa-solid fa-location-dot"></i> Tatuapé, São Paulo - SP</div>
+                <!-- Repetição para fluxo contínuo -->
+                <div class="ticker-item"><i class="fa-solid fa-gem"></i> Porcelanas & Lentes E-Max</div>
+                <div class="ticker-item"><i class="fa-solid fa-cube"></i> Scanner Intraoral 3D</div>
+                <div class="ticker-item"><i class="fa-solid fa-microscope"></i> Diagnóstico Digital de Alta Definição</div>
+                <div class="ticker-item"><i class="fa-solid fa-couch"></i> Ambiente VIP & Acolhedor</div>
+                <div class="ticker-item"><i class="fa-solid fa-location-dot"></i> Tatuapé, São Paulo - SP</div>
+            </div>
+        </div>
+
+        <!-- Diferenciais -->
+        <section id="diferenciais" class="section-container diferenciais-section">
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-icon"><i class="fa-solid fa-microscope"></i></div>
+                    <h4>Tecnologia de Precisão</h4>
+                    <p>Equipamentos de última geração para diagnósticos e procedimentos com acurácia milimétrica e absoluto conforto.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon"><i class="fa-solid fa-hand-holding-heart"></i></div>
+                    <h4>Cuidado Humanizado</h4>
+                    <p>Uma experiência acolhedora e empática, focada integralmente no seu bem-estar, escuta ativa e tranquilidade.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon"><i class="fa-solid fa-medal"></i></div>
+                    <h4>Excelência Comprovada</h4>
+                    <p>Rigor técnico e refinamento artístico para entregar resultados estéticos harmônicos que superam todas as expectativas.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Sobre / Bem-vindo -->
+        <section id="sobre" class="section-container section-bg bem-vindo">
+            <div class="bem-vindo-conteudo">
+                <span class="section-tag">SOBRE A CLÍNICA</span>
+                <h2 class="section-title">Bem-vindo à <em>Clínica Alfonso</em></h2>
+                <p class="about-highlight">"Cada sorriso tem uma história única — e o seu tratamento deve ser desenhado sob medida."</p>
+                <p>Aqui, a odontologia transcende o procedimento convencional. É o ponto de encontro entre a ciência médica, a tecnologia digital e o olhar artístico, criando um espaço onde cuidar do sorriso é um momento de autocuidado e bem-estar.</p>
+                <p>Com um consultório moderno e estruturado no Tatuapé, oferecemos tratamentos integrados que devolvem a saúde mastigatória e elevam a sua autoconfiança.</p>
+                <div class="bem-vindo-cta">
+                    <a href="https://wa.me/5511967687666" target="_blank" rel="noopener" class="btn-primary">
+                        <i class="fab fa-whatsapp"></i> Fale com a nossa equipe
+                    </a>
+                </div>
+            </div>
+            <div class="bem-vindo-imagem">
+                <div class="bem-vindo-img-frame">
+                    <img src="imagens/clinica.jpg" alt="Instalações da Clínica Alfonso" loading="lazy" />
+                </div>
+            </div>
+        </section>
+
+        <!-- Serviços / Tratamentos -->
+        <section id="servicos" class="section-container">
+            <div class="section-header">
+                <span class="section-tag">ESPECIALIDADES</span>
+                <h2 class="section-title">Tratamentos <em>Sob Medida</em></h2>
+                <p class="section-subtitle">Especialidades planejadas com atenção a cada detalhe anatômico para harmonizar saúde bucal e beleza com sofisticação.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-tooth"></i></div>
+                    <h3>Implantes Dentários</h3>
+                    <p>Recupere a estabilidade, a função mastigatória e a segurança com implantes osseointegrados de última geração.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                    <h3>Lentes de Contato</h3>
+                    <p>Lâminas de porcelana ultrafinas desenhadas digitalmente para harmonizar textura, contorno e luminosidade do seu sorriso.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-regular fa-face-smile"></i></div>
+                    <h3>Clareamento Dental</h3>
+                    <p>Técnicas clínicas seguras e eficazes para conquistar dentes mais claros e radiantes com proteção do esmalte dental.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-user-doctor"></i></div>
+                    <h3>Clínica Geral & Prevenção</h3>
+                    <p>Check-ups minuciosos, profilaxia e odontologia preventiva contínua para preservar a integridade da sua saúde bucal.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção: Experiência & Parceiro da Clínica (Vídeo) -->
+        <section id="experiencia" class="section-container section-bg partner-section">
+            <div class="partner-wrapper">
+                <div class="partner-video-col">
+                    <div class="partner-video-card">
+                        <video id="partner-video" playsinline preload="metadata" poster="imagens/parceiro_poster.jpg" controls>
+                            <source src="imagens/parceiro_video.mp4" type="video/mp4">
+                            Seu navegador não suporta vídeos.
+                        </video>
+                    </div>
+                </div>
+                <div class="partner-text-col">
+                    <span class="section-tag">EXPERIÊNCIA REAL</span>
+                    <h2 class="section-title">A confiança de quem viveu a <em>transformação</em></h2>
+                    <p class="about-highlight">"Estar nas mãos de quem une precisão técnica e cuidado humano faz toda a diferença."</p>
+                    <p>Nossos parceiros e pacientes experimentam na prática o padrão Alfonso: pontualidade rigorosa, diagnósticos transparentes e procedimentos planejados para valorizar a sua identidade natural com total segurança.</p>
+                    
+                    <div class="partner-trust-badges">
+                        <div class="trust-badge-item">
+                            <span class="badge-number">100%</span>
+                            <span class="badge-label">Personalizado</span>
+                        </div>
+                        <div class="trust-badge-item">
+                            <span class="badge-number">VIP</span>
+                            <span class="badge-label">Atendimento Exclusivo</span>
+                        </div>
+                        <div class="trust-badge-item">
+                            <span class="badge-number">Tatuapé</span>
+                            <span class="badge-label">São Paulo - SP</span>
+                        </div>
+                    </div>
+
+                    <div class="partner-cta">
+                        <a href="https://wa.me/5511967687666?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o%20na%20Cl%C3%ADnica%20Alfonso" target="_blank" rel="noopener" class="btn-primary">
+                            <i class="fab fa-whatsapp"></i> Iniciar Atendimento
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Nossa Abordagem -->
+        <section id="abordagem" class="section-container">
+            <div class="section-header">
+                <span class="section-tag">METODOLOGIA</span>
+                <h2 class="section-title">Nossa <em>Abordagem</em></h2>
+                <p class="section-subtitle">O caminho para o sorriso perfeito é um processo transparente, previsível e construído em harmonia com você.</p>
+            </div>
+            <div class="steps-container">
+                <div class="step-item">
+                    <div class="step-number">01</div>
+                    <div class="step-content">
+                        <h3>Diagnóstico Digital e Imersivo</h3>
+                        <p>Utilizamos registros de alta definição e análise anatômica detalhada para mapear cada necessidade e desenhar o planejamento ideal.</p>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">02</div>
+                    <div class="step-content">
+                        <h3>Planejamento Personalizado</h3>
+                        <p>Você participa ativamente da concepção do seu novo sorriso. Simulamos a harmonia estética e funcional antes do início dos procedimentos.</p>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">03</div>
+                    <div class="step-content">
+                        <h3>Execução com Maestria</h3>
+                        <p>Nossa equipe executa cada etapa com rigor cirúrgico e sensibilidade artística, proporcionando conforto pleno em todas as sessões.</p>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">04</div>
+                    <div class="step-content">
+                        <h3>Acompanhamento Contínuo</h3>
+                        <p>Nosso compromisso perdura após a conclusão do tratamento, com rotinas preventivas que garantem longevidade e brilho ao seu sorriso.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Galeria de Fotos -->
+        <section class="section-container section-bg galeria">
+            <div class="section-header">
+                <span class="section-tag">ESTRUTURA</span>
+                <h2 class="section-title">Conheça Nosso <em>Espaço</em></h2>
+                <p class="section-subtitle">Um consultório concebido para oferecer privacidade, tranquilidade e uma experiência odontológica verdadeiramente agradável.</p>
+            </div>
+            <div class="galeria-grid">
+                <div class="galeria-card">
+                    <img src="imagens/1000057655.jpg" alt="Instalações Clínica Alfonso" loading="lazy" />
+                </div>
+                <div class="galeria-card">
+                    <img src="imagens/1000057657.jpg" alt="Consultório e Atendimento" loading="lazy" />
+                </div>
+                <div class="galeria-card">
+                    <img src="imagens/1000057659.jpg" alt="Espaço Clínico" loading="lazy" />
+                </div>
+                <div class="galeria-card">
+                    <img src="imagens/midia.jpg" alt="Detalhes e Recepção" loading="lazy" />
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção FAQ (Perguntas Frequentes com Accordion) -->
+        <section id="faq" class="section-container faq-section">
+            <div class="section-header">
+                <span class="section-tag">DÚVIDAS FREQUENTES</span>
+                <h2 class="section-title">Perguntas <em>Frequentes</em></h2>
+                <p class="section-subtitle">Tudo o que você precisa saber para planejar sua visita à Clínica Alfonso com total clareza.</p>
+            </div>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>A Clínica Alfonso atende convênios ou emite recibo para reembolso?</span>
+                        <i class="fas fa-chevron-down faq-arrow"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Nosso atendimento é exclusivamente particular para garantir tempo dedicado, biossegurança rigorosa e os melhores materiais do mercado. Fornecemos toda a documentação, laudos e recibos detalhados para que você possa solicitar o reembolso integral ou parcial junto ao seu plano de saúde.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>As lentes de contato dentais desgastam os dentes naturais?</span>
+                        <i class="fas fa-chevron-down faq-arrow"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Com o planejamento digital atual e lâminas ultrafinas de porcelana E-Max, o preparo é minimamente invasivo ou muitas vezes nulo, preservando ao máximo a estrutura original do dente com naturalidade e saúde biológica.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>O procedimento de implante dentário dói?</span>
+                        <i class="fas fa-chevron-down faq-arrow"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>O procedimento é completamente indolor. Utilizamos técnicas anestésicas avançadas e planejamento guiado por imagem computadorizada. O pós-operatório costuma ser extremamente suave e tranquilo com os medicamentos prescritos.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>O edifício conta com estacionamento no local?</span>
+                        <i class="fas fa-chevron-down faq-arrow"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Sim! Estamos situados na Rua Catiguá, 159, Conjunto 518 (Tatuapé). O edifício oferece estacionamento privativo com serviço de manobrista no local, além de fácil acesso próximo às principais vias da Zona Leste.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Contato Completa e Funcional -->
+        <section id="contato" class="section-container section-bg contato-section">
+            <div class="section-header">
+                <span class="section-tag">FALE CONOSCO</span>
+                <h2 class="section-title">Visite a <em>Nossa Clínica</em></h2>
+                <p class="section-subtitle">Estamos prontos para recebê-lo com exclusividade e dedicar toda a atenção que o seu sorriso merece.</p>
+            </div>
+            <div class="contact-wrapper">
+                <div class="contact-cards-grid">
+                    <div class="contact-card">
+                        <div class="contact-card-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <h3>Localização</h3>
+                        <p>Rua Catiguá, 159, Conjunto 518<br>Tatuapé, São Paulo - SP</p>
+                        <a href="https://maps.google.com/?q=Rua+Catigua+159+Tatuape+SP" target="_blank" rel="noopener" class="contact-card-btn">Ver no Google Maps <i class="fas fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-card-icon"><i class="fab fa-whatsapp"></i></div>
+                        <h3>WhatsApp & Fone</h3>
+                        <p>(11) 96768-7666<br>contato@clinicaalfonso.com.br</p>
+                        <a href="https://wa.me/5511967687666" target="_blank" rel="noopener" class="contact-card-btn">Iniciar Conversa <i class="fab fa-whatsapp"></i></a>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-card-icon"><i class="fas fa-calendar-check"></i></div>
+                        <h3>Agendamento Online</h3>
+                        <p>Escolha o melhor dia e horário com confirmação rápida e prática.</p>
+                        <a href="https://agenda.link/92198" target="_blank" rel="noopener" class="contact-card-btn">Agendar Horário <i class="fas fa-clock"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Botão Flutuante de WhatsApp -->
+    <a href="https://wa.me/5511967687666" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Fale conosco no WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+        <span class="whatsapp-tooltip">Agende pelo WhatsApp</span>
+    </a>
+
+    <!-- Botão Voltar ao Topo -->
+    <button class="back-to-top" id="backToTop" aria-label="Voltar ao topo da página">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Rodapé -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-col footer-logo-col">
+                <a href="#inicio" aria-label="Voltar ao início">
+                    <img src="imagens/logo_sem_fundo1.png" alt="Logo Clínica Alfonso Rodapé" class="footer-logo">
+                </a>
+            </div>
+            <div class="footer-col footer-contact-col">
+                <h4>Clínica Alfonso</h4>
+                <p><i class="fas fa-map-marker-alt"></i> Rua Catiguá, 159, Conj. 518 - Tatuapé, SP</p>
+                <p><i class="fas fa-phone"></i> (11) 96768-7666</p>
+                <p><i class="fas fa-envelope"></i> contato@clinicaalfonso.com.br</p>
+            </div>
+            <div class="footer-col footer-social-col">
+                <h4>Conecte-se Conosco</h4>
+                <div class="social-icons-footer">
+                    <a href="https://www.instagram.com/dranayaraalfonso/" target="_blank" rel="noopener" aria-label="Instagram da Dra. Nayara Alfonso"><i class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/5511967687666" target="_blank" rel="noopener" aria-label="WhatsApp Clínica Alfonso"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Clínica Alfonso. Todos os direitos reservados. Odontologia de Excelência.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

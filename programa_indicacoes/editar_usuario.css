@@ -1,0 +1,211 @@
+/* --- RAÍZ: TEMA PADRONIZADO "CLÍNICA ALFONSO" --- */
+:root {
+  --dark-teal: #30414b;
+  --ivory-white: #fcfcfc;
+  --soft-gold: #c0b283;
+  --text-primary: #2c2c2c;
+  --text-secondary: #5c5c5c;
+  --section-bg: #f5f7f9;
+  --border-color: #eaeaea;
+  --success-color: #28a745;
+  --danger-color: #dc3545;
+  --heading-font: "Playfair Display", serif;
+  --body-font: "Lato", sans-serif;
+  --shadow-soft: 0 5px 20px rgba(48, 65, 75, 0.07);
+  --shadow-medium: 0 12px 35px rgba(48, 65, 75, 0.1);
+  --transition: 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+/* --- ESTILOS GERAIS --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--body-font);
+  background-color: var(--section-bg);
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+
+/* --- LAYOUT PRINCIPAL --- */
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem 5%;
+  min-height: calc(100vh - 100px); /* Ajuste a altura do header se necessário */
+}
+
+/* --- CARD DO FORMULÁRIO --- */
+.section-card {
+  width: 100%;
+  max-width: 700px;
+  background-color: var(--ivory-white);
+  padding: 2.5rem 3rem;
+  border-radius: 16px;
+  box-shadow: var(--shadow-medium);
+  border: 1px solid var(--border-color);
+  animation: fade-in-up 0.6s var(--transition);
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.section-card h2 {
+  font-family: var(--heading-font);
+  color: var(--dark-teal);
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+/* --- TABELA E CAMPOS DO FORMULÁRIO --- */
+.form-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.form-table td {
+  padding: 0.75rem 0.5rem;
+  vertical-align: middle;
+}
+
+.form-table label {
+  font-weight: 700;
+  color: var(--text-secondary);
+  font-size: 1rem;
+  display: block;
+}
+
+/* --- ESTILO DOS INPUTS E SELECT --- */
+.form-table input[type="text"],
+.form-table input[type="email"],
+.form-table select {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  font-family: var(--body-font);
+  font-size: 1rem;
+  color: var(--text-primary);
+  background-color: var(--ivory-white);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  transition: all var(--transition);
+}
+
+.form-table input:focus,
+.form-table select:focus {
+  outline: none;
+  border-color: var(--dark-teal);
+  box-shadow: 0 0 0 3px rgba(48, 65, 75, 0.1);
+}
+
+/* --- BOTÃO DE ATUALIZAÇÃO --- */
+.edit-btn {
+  display: block;
+  width: 100%;
+  padding: 1rem;
+  margin-top: 2rem;
+  font-family: var(--body-font);
+  font-weight: 700;
+  font-size: 1.1rem;
+  text-align: center;
+  color: var(--dark-teal);
+  background-color: var(--soft-gold);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.edit-btn:hover {
+  background-color: #a89a71;
+  box-shadow: var(--shadow-soft);
+  transform: translateY(-3px);
+}
+
+/* --- ALERTAS DE FEEDBACK --- */
+.alert {
+  padding: 1rem;
+  margin: 1rem auto 0;
+  max-width: 700px;
+  border-radius: 8px;
+  font-weight: 700;
+  border: 1px solid transparent;
+  text-align: center;
+}
+
+.alert.success {
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+  color: #155724;
+}
+
+.alert.error {
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+  color: #721c24;
+}
+
+/* --- RESPONSIVIDADE --- */
+@media (max-width: 768px) {
+  .content {
+    padding: 2rem 1rem;
+  }
+
+  .section-card {
+    padding: 2rem 1.5rem;
+  }
+
+  /* Faz com que a tabela se comporte como blocos empilhados */
+  .form-table,
+  .form-table tbody,
+  .form-table tr,
+  .form-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .form-table tr {
+    margin-bottom: 1rem;
+  }
+
+  .form-table td {
+    padding: 0.2rem 0;
+  }
+
+  .form-table label {
+    margin-bottom: 0.5rem;
+  }
+}
+/* Adicione no final do seu arquivo editar_usuario.css */
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.checkbox-container input[type="checkbox"] {
+  width: auto; /* Remove a largura de 100% dos outros inputs */
+  width: 1.3em;
+  height: 1.3em;
+  cursor: pointer;
+  accent-color: var(--dark-teal); /* Usa a cor do tema para o check */
+}
+
+.checkbox-label {
+  font-weight: normal !important; /* Sobrescreve o negrito do label da tabela */
+  color: var(--text-primary) !important;
+  cursor: pointer;
+}

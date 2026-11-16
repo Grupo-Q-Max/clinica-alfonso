@@ -1,0 +1,169 @@
+/* --- RAÍZ: TEMA PADRONIZADO "CLÍNICA ALFONSO" --- */
+:root {
+  --dark-teal: #30414b;
+  --ivory-white: #fcfcfc;
+  --soft-gold: #c0b283;
+  --text-primary: #2c2c2c;
+  --text-secondary: #5c5c5c;
+  --section-bg: #f5f7f9;
+  --border-color: #eaeaea;
+  --heading-font: "Playfair Display", serif;
+  --body-font: "Lato", sans-serif;
+  --shadow-soft: 0 5px 20px rgba(48, 65, 75, 0.07);
+  --shadow-medium: 0 12px 35px rgba(48, 65, 75, 0.1);
+  --transition: 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+/* --- ESTILOS GERAIS DA PÁGINA --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: var(--body-font);
+  background-color: var(--section-bg);
+  color: var(--text-primary);
+  font-size: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.section-container {
+  padding: 4rem 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 180px);
+}
+
+/* --- DESIGN DO FORMULÁRIO --- */
+.form-wrapper {
+  width: 100%;
+  max-width: 900px;
+  background-color: var(--ivory-white);
+  padding: 4rem;
+  border-radius: 20px;
+  box-shadow: var(--shadow-medium);
+}
+.form-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+.form-icon {
+  font-size: 3.5rem;
+  color: var(--soft-gold);
+  margin-bottom: 1rem;
+}
+.form-title {
+  font-family: var(--heading-font);
+  font-size: 2.8rem;
+  color: var(--dark-teal);
+  margin-bottom: 0.5rem;
+}
+.form-subtitle {
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+.input-group {
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+.full-width {
+  grid-column: 1 / -1;
+}
+
+.input-group label {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  color: var(--dark-teal);
+}
+.input-group input {
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: var(--body-font);
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+.input-group input:focus {
+  outline: none;
+  border-color: var(--soft-gold);
+  box-shadow: 0 0 0 3px rgba(192, 178, 131, 0.3);
+}
+.input-group input.loading {
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><style>.spinner_OSmW{transform-origin:center;animation:spinner_T6hf .75s step-end infinite}@keyframes spinner_T6hf{8.3%{transform:rotate(30deg)}16.6%{transform:rotate(60deg)}25%{transform:rotate(90deg)}33.3%{transform:rotate(120deg)}41.6%{transform:rotate(150deg)}50%{transform:rotate(180deg)}58.3%{transform:rotate(210deg)}66.6%{transform:rotate(240deg)}75%{transform:rotate(270deg)}83.3%{transform:rotate(300deg)}91.6%{transform:rotate(330deg)}100%{transform:rotate(360deg)}}</style><g class="spinner_OSmW"><rect x="11" y="1" width="2" height="5" opacity=".14"/><rect x="11" y="1" width="2" height="5" transform="rotate(30 12 12)" opacity=".29"/><rect x="11" y="1" width="2" height="5" transform="rotate(60 12 12)" opacity=".43"/><rect x="11" y="1" width="2" height="5" transform="rotate(90 12 12)" opacity=".57"/><rect x="11" y="1" width="2" height="5" transform="rotate(120 12 12)" opacity=".71"/><rect x="11" y="1" width="2" height="5" transform="rotate(150 12 12)" opacity=".86"/><rect x="11" y="1" width="2" height="5" transform="rotate(180 12 12)"/></g></svg>');
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+}
+
+.form-footer {
+  margin-top: 2rem;
+  text-align: center;
+}
+.btn-primary {
+  background-color: var(--dark-teal);
+  color: var(--ivory-white);
+  padding: 1rem 2.5rem;
+  border: 2px solid var(--dark-teal);
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.1rem;
+  letter-spacing: 0.5px;
+  transition: all var(--transition);
+  cursor: pointer;
+  display: inline-block;
+  width: 100%;
+  max-width: 300px;
+}
+.btn-primary:hover {
+  background-color: var(--soft-gold);
+  border-color: var(--soft-gold);
+  color: var(--dark-teal);
+  transform: translateY(-3px);
+}
+
+/* --- RESPONSIVIDADE --- */
+@media (max-width: 768px) {
+  .form-wrapper {
+    padding: 2rem;
+  }
+  .form-title {
+    font-size: 2.2rem;
+  }
+}
+/* --- ESTILOS PARA CAIXA DE MENSAGEM --- */
+.message-box {
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  text-align: center;
+  border: 1px solid transparent;
+}
+
+.message-box.success {
+  background-color: #e8f5e9; /* Verde claro */
+  color: #2e7d32; /* Verde escuro */
+  border-color: #c8e6c9;
+}
+
+.message-box.error {
+  background-color: #ffebee; /* Vermelho claro */
+  color: #d32f2f; /* Vermelho escuro */
+  border-color: #ffcdd2;
+}

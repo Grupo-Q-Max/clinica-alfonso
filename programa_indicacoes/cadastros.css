@@ -1,0 +1,406 @@
+/* --- RAÍZ: TEMA PADRONIZADO "CLÍNICA ALFONSO" --- */
+:root {
+  --dark-teal: #30414b;
+  --ivory-white: #fcfcfc;
+  --soft-gold: #c0b283;
+  --text-primary: #2c2c2c;
+  --text-secondary: #5c5c5c;
+  --section-bg: #f5f7f9;
+  --border-color: #eaeaea;
+  --success-color: #28a745;
+  --danger-color: #dc3545;
+  --heading-font: "Playfair Display", serif;
+  --body-font: "Lato", sans-serif;
+  --shadow-soft: 0 5px 20px rgba(48, 65, 75, 0.07);
+  --shadow-medium: 0 12px 35px rgba(48, 65, 75, 0.1);
+  --transition: 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+/* --- ESTILOS GERAIS --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: var(--body-font);
+  background-color: var(--section-bg);
+  color: var(--text-primary);
+}
+.main-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem 5%;
+  /* CORREÇÃO: Adiciona margem no topo para empurrar o conteúdo para baixo do header. */
+  /* Ajuste '80px' para a altura exata do seu header, se necessário. */
+  margin-top: 80px;
+}
+
+/* --- CABEÇALHO DA PÁGINA --- */
+.page-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.page-header h1 {
+  font-family: var(--heading-font);
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  color: var(--dark-teal);
+  margin-bottom: 0.5rem;
+}
+.page-header p {
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* --- BARRA DE AÇÕES E FILTROS --- */
+.actions-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  background: var(--ivory-white);
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: var(--shadow-soft);
+  border: 1px solid var(--border-color);
+}
+.filter-buttons,
+.add-buttons {
+  display: flex;
+  gap: 0.75rem;
+}
+.search-bar {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  min-width: 250px;
+}
+.search-bar i {
+  color: var(--text-secondary);
+  margin-right: 0.75rem;
+}
+.search-bar input {
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: var(--body-font);
+  font-size: 1rem;
+  width: 100%;
+}
+.filter-button {
+  padding: 0.7rem 1.4rem;
+  text-decoration: none;
+  font-weight: 700;
+  color: var(--text-secondary);
+  background-color: var(--section-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  transition: all var(--transition);
+}
+.filter-button:hover {
+  background-color: var(--soft-gold);
+  color: var(--dark-teal);
+}
+.filter-button.active {
+  background-color: var(--dark-teal);
+  color: var(--ivory-white);
+  border-color: var(--dark-teal);
+}
+
+/* --- BOTÕES PADRÃO --- */
+.btn-primary,
+.btn-secondary {
+  padding: 0.7rem 1.4rem;
+  font-weight: 700;
+  font-size: 0.9rem;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all var(--transition);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.btn-primary {
+  background-color: var(--soft-gold);
+  color: var(--dark-teal);
+}
+.btn-primary:hover {
+  background-color: #a89a71;
+  transform: translateY(-2px);
+}
+.btn-primary.danger {
+  background-color: var(--danger-color);
+  color: var(--ivory-white);
+}
+.btn-primary.danger:hover {
+  background-color: #c82333;
+}
+.btn-secondary {
+  background-color: transparent;
+  color: var(--dark-teal);
+  border: 2px solid var(--border-color);
+}
+.btn-secondary:hover {
+  background-color: var(--section-bg);
+  border-color: var(--dark-teal);
+}
+
+/* --- TABELA DE DADOS --- */
+.table-container {
+  background-color: var(--ivory-white);
+  border-radius: 16px;
+  box-shadow: var(--shadow-soft);
+  overflow-x: auto;
+  border: 1px solid var(--border-color);
+}
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.data-table th,
+.data-table td {
+  padding: 1rem;
+  text-align: left;
+  vertical-align: middle;
+}
+.data-table thead {
+  border-bottom: 2px solid var(--border-color);
+}
+.data-table th {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+}
+.data-table tbody tr {
+  border-bottom: 1px solid var(--border-color);
+}
+.data-table tbody tr:last-child {
+  border-bottom: none;
+}
+.data-table tbody tr:hover {
+  background-color: var(--section-bg);
+}
+.actions-cell {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+.no-results {
+  text-align: center;
+  padding: 3rem;
+  color: var(--text-secondary);
+  font-size: 1.2rem;
+}
+
+/* --- ALERTAS --- */
+.alert {
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  border-radius: 8px;
+  font-weight: 700;
+  border: 1px solid transparent;
+}
+.alert.success {
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+  color: #155724;
+}
+.alert.error {
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+  color: #721c24;
+}
+
+/* --- MODAL --- */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(48, 65, 75, 0.7);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+.modal-content {
+  background: var(--ivory-white);
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: var(--shadow-medium);
+  width: 100%;
+  max-width: 500px;
+  animation: modal-fade-in 0.5s var(--transition);
+}
+@keyframes modal-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 1rem;
+  margin-bottom: 1.5rem;
+}
+.modal-title {
+  font-family: var(--heading-font);
+  font-size: 1.8rem;
+  color: var(--dark-teal);
+}
+.modal-body {
+  padding: 1.5rem 0;
+  text-align: center;
+  font-size: 1.1rem;
+}
+.close-modal {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: color 0.3s;
+}
+.close-modal:hover {
+  color: var(--danger-color);
+}
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+/* --- RESPONSIVIDADE --- */
+@media (max-width: 992px) {
+  .actions-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+/* ======================================================= */
+/* === ESTILOS GERAIS PARA POP-UPS (MODAIS) ================ */
+/* ======================================================= */
+
+.modal-overlay {
+  /* Magia acontece aqui: */
+  position: fixed; /* Fixa o popup na tela, flutuando sobre o conteúdo */
+  inset: 0; /* Ocupa a tela inteira (top: 0; left: 0; right: 0; bottom: 0;) */
+  background-color: rgba(48, 65, 75, 0.6); /* Fundo escuro semi-transparente */
+  backdrop-filter: blur(5px); /* Efeito de desfoque no fundo */
+
+  /* Centraliza o conteúdo */
+  display: none; /* Começa escondido, o JS controla a exibição */
+  justify-content: center;
+  align-items: center;
+
+  z-index: 2000; /* Garante que fique na frente de tudo */
+}
+
+.modal-content {
+  background-color: var(--ivory-white);
+  padding: 2.5rem;
+  border-radius: 16px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+  width: 90%;
+  max-width: 550px; /* Largura máxima do popup */
+  position: relative;
+  animation: slide-up 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.modal-title {
+  font-family: var(--heading-font);
+  font-size: 1.5rem;
+  color: var(--dark-teal);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.close-modal {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  line-height: 1;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: transform 0.3s, color 0.3s;
+}
+
+.close-modal:hover {
+  color: var(--dark-teal);
+  transform: scale(1.2);
+}
+
+.modal-body {
+  margin-bottom: 2rem;
+}
+
+.modal-body p {
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+/* Ajustes para o formulário dentro do modal */
+.modal-content .form-group {
+  margin-bottom: 1.25rem;
+}
+
+.modal-content .form-control {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font-family: var(--body-font);
+  font-size: 1rem;
+}
+.modal-content .form-group small {
+  display: block;
+  margin-top: 0.5rem;
+  color: var(--text-secondary);
+}
+
+/* Animação de entrada do popup */
+@keyframes slide-up {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

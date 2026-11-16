@@ -1,0 +1,298 @@
+/* --- RAÍZ: TEMA PADRONIZADO "CLÍNICA ALFONSO" --- */
+:root {
+  --dark-teal: #30414b;
+  --ivory-white: #fcfcfc;
+  --soft-gold: #c0b283;
+  --text-primary: #2c2c2c;
+  --text-secondary: #5c5c5c;
+  --section-bg: #f5f7f9;
+  --border-color: #eaeaea;
+  --success-color: #28a745;
+  --danger-color: #dc3545;
+  --info-color: #17a2b8;
+  --heading-font: "Playfair Display", serif;
+  --body-font: "Lato", sans-serif;
+  --shadow-soft: 0 5px 20px rgba(48, 65, 75, 0.07);
+  --shadow-medium: 0 12px 35px rgba(48, 65, 75, 0.1);
+  --transition: 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+/* --- ESTILOS GERAIS --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body.dashboard-body {
+  font-family: var(--body-font);
+  background-color: var(--section-bg);
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+.main-content {
+  max-width: 800px; /* Aumentado para acomodar a tabela */
+  margin: 0 auto;
+  padding: 2rem 5%;
+  margin-top: 80px;
+}
+
+/* --- CABEÇALHO E ALERTAS --- */
+.page-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.page-header h1 {
+  font-family: var(--heading-font);
+  color: var(--dark-teal);
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  margin-bottom: 0.5rem;
+}
+.page-header p {
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+}
+
+.alert {
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  border-radius: 8px;
+  font-weight: 700;
+  border: 1px solid transparent;
+}
+.alert.success {
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+  color: #155724;
+}
+.alert.error {
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+  color: #721c24;
+}
+
+/* --- CARD DO FORMULÁRIO --- */
+.form-card {
+  background-color: var(--ivory-white);
+  padding: 2.5rem;
+  border-radius: 20px;
+  box-shadow: var(--shadow-medium);
+  border: 1px solid var(--border-color);
+}
+.saldo-box {
+  text-align: center;
+  background: var(--dark-teal);
+  color: var(--ivory-white);
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+}
+.saldo-box span {
+  display: block;
+  font-size: 1rem;
+  opacity: 0.8;
+}
+.saldo-box strong {
+  font-family: var(--heading-font);
+  font-size: 2.5rem;
+}
+
+.info-box {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background-color: var(--section-bg);
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  border: 1px solid var(--border-color);
+}
+.info-box i {
+  font-size: 1.5rem;
+  color: var(--info-color);
+}
+.info-box p {
+  margin: 0;
+  color: var(--text-secondary);
+}
+
+/* --- CAMPOS DO FORMULÁRIO --- */
+.form-group {
+  margin-bottom: 1.5rem;
+}
+.form-group label {
+  display: block;
+  font-weight: 700;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+}
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 0.9rem;
+  font-family: var(--body-font);
+  font-size: 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  transition: all var(--transition);
+}
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: var(--dark-teal);
+  box-shadow: 0 0 0 3px rgba(48, 65, 75, 0.1);
+}
+.form-group input[readonly] {
+  background-color: var(--section-bg);
+  cursor: not-allowed;
+}
+
+.payment-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  border-left: 3px solid var(--soft-gold);
+  padding-left: 1.5rem;
+  margin-top: 1.5rem;
+}
+.hidden {
+  display: none;
+}
+
+/* --- BOTÃO --- */
+.btn-primary {
+  width: 100%;
+  padding: 1rem;
+  font-weight: 700;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  background-color: var(--soft-gold);
+  color: var(--dark-teal);
+}
+.btn-primary:hover:not(:disabled) {
+  background-color: #a89a71;
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-soft);
+}
+.btn-primary:disabled {
+  background-color: var(--border-color);
+  color: var(--text-secondary);
+  cursor: not-allowed;
+}
+
+/* --- SEÇÃO DE HISTÓRICO --- */
+.history-section {
+  margin-top: 3rem;
+  background-color: var(--ivory-white);
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: var(--shadow-medium);
+  border: 1px solid var(--border-color);
+}
+.history-section h2 {
+  font-family: var(--heading-font);
+  color: var(--dark-teal);
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+/* --- TABELA DE DADOS --- */
+.table-container {
+  overflow-x: auto;
+}
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.data-table th,
+.data-table td {
+  padding: 0.8rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
+}
+.data-table thead th {
+  font-weight: 700;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+}
+.data-table tbody tr:hover {
+  background-color: var(--section-bg);
+}
+.no-results {
+  text-align: center;
+  padding: 2rem;
+  color: var(--text-secondary);
+}
+
+/* --- STATUS BADGES --- */
+.status-badge {
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--ivory-white);
+}
+.status-pendente {
+  background-color: var(--info-color);
+}
+.status-aprovado {
+  background-color: var(--success-color);
+}
+.status-rejeitado {
+  background-color: var(--danger-color);
+}
+
+/* --- ESTILOS DO MODAL --- */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(48, 65, 75, 0.7);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+.modal-content {
+  background: var(--ivory-white);
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: var(--shadow-medium);
+  width: 100%;
+}
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 1rem;
+  margin-bottom: 1.5rem;
+}
+.modal-title {
+  font-family: var(--heading-font);
+  font-size: 1.8rem;
+  color: var(--dark-teal);
+  line-height: 1.2;
+}
+.modal-body p {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 2rem;
+}

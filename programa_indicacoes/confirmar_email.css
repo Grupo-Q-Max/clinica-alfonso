@@ -1,0 +1,120 @@
+/* --- RAÍZ: TEMA PADRONIZADO "CLÍNICA ALFONSO" --- */
+:root {
+  --dark-teal: #30414b;
+  --ivory-white: #fcfcfc;
+  --soft-gold: #c0b283;
+  --text-primary: #2c2c2c;
+  --text-secondary: #5c5c5c;
+  --section-bg: #f5f7f9;
+  --border-color: #eaeaea;
+  --error-color: #d32f2f;
+  --success-color: #2e7d32;
+  --heading-font: "Playfair Display", serif;
+  --body-font: "Lato", sans-serif;
+  --shadow-medium: 0 12px 35px rgba(48, 65, 75, 0.1);
+  --transition: 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+/* --- ESTILOS GERAIS DA PÁGINA "CONFIRMAR EMAIL" --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: var(--body-font);
+  background-color: var(--section-bg);
+  color: var(--text-primary);
+  font-size: 110%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+/* --- CARD DE CONFIRMAÇÃO --- */
+.confirmation-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.confirmation-card {
+  background: var(--ivory-white);
+  border-radius: 20px;
+  padding: 3rem 4rem;
+  width: 100%;
+  max-width: 600px;
+  box-shadow: var(--shadow-medium);
+  text-align: center;
+  border-top: 5px solid var(--soft-gold);
+}
+.logo-container {
+  margin-bottom: 2rem;
+}
+.logo-container img {
+  height: 80px;
+}
+.card-content i {
+  font-size: 4rem;
+  margin-bottom: 1.5rem;
+}
+.confirmation-title {
+  font-family: var(--heading-font);
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+.confirmation-message {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  margin-bottom: 2.5rem;
+}
+.success-title {
+  color: var(--success-color);
+}
+.error-title {
+  color: var(--error-color);
+}
+
+.btn-primary {
+  background-color: var(--dark-teal);
+  color: var(--ivory-white);
+  padding: 1rem 2.5rem;
+  border: 2px solid var(--dark-teal);
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.1rem;
+  letter-spacing: 0.5px;
+  transition: all var(--transition);
+  cursor: pointer;
+  display: inline-block;
+}
+.btn-primary:hover {
+  background-color: var(--soft-gold);
+  border-color: var(--soft-gold);
+  color: var(--dark-teal);
+  transform: translateY(-3px);
+}
+
+/* --- RESPONSIVIDADE --- */
+@media (max-width: 768px) {
+  body {
+    font-size: 100%;
+  }
+  .confirmation-card {
+    padding: 2rem 1.5rem;
+  }
+  .confirmation-title {
+    font-size: 2rem;
+  }
+  .confirmation-message {
+    font-size: 1.1rem;
+  }
+}

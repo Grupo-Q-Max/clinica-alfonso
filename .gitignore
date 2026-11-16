@@ -1,0 +1,32 @@
+# Arquivos de Sistema e Cache do cPanel
+.ftpquota
+quota
+passwd
+shadow
+@pwcache/
+*.rcube.db*
+*.zip
+*.tar.gz
+*.sql
+
+# Backups e Arquivos Temporários
+imagens_backup/
+MicrosoftTeams-video.mp4
+*.bak
+*.old
+*.log
+*.tmp
+.htaccess.no_htaccess.phpupgrader
+.htaccess.phpupgrader.*
+.htaccess_desativado.txt
+
+# Arquivos Sensíveis e Credenciais
+programa_indicacoes/.env
+programa_indicacoes/processos/debug_clinicorp.txt
+
+# Ambientes Locais / IDEs
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+

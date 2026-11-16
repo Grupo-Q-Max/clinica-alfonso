@@ -1,0 +1,460 @@
+/* --- RAÍZ: TEMA PADRONIZADO "CLÍNICA ALFONSO" --- */
+:root {
+  --dark-teal: #30414b;
+  --ivory-white: #fcfcfc;
+  --soft-gold: #c0b283;
+  --text-primary: #2c2c2c;
+  --text-secondary: #5c5c5c;
+  --section-bg: #f5f7f9;
+  --border-color: #eaeaea;
+  --success-color: #2e7d32;
+  --warning-color: #ed6c02;
+  --error-color: #d32f2f;
+  --heading-font: "Playfair Display", serif;
+  --body-font: "Lato", sans-serif;
+  --shadow-soft: 0 5px 20px rgba(48, 65, 75, 0.07);
+  --shadow-medium: 0 12px 35px rgba(48, 65, 75, 0.1);
+  --transition: 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+/* --- ESTILOS GERAIS DA PÁGINA "INDICAÇÕES" --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: var(--body-font);
+  background-color: var(--section-bg);
+  color: var(--text-primary);
+  font-size: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.main-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 5%;
+}
+
+/* --- CABEÇALHO DA PÁGINA --- */
+.page-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+.page-header h1 {
+  font-family: var(--heading-font);
+  font-size: clamp(2.8rem, 5vw, 4rem);
+  color: var(--dark-teal);
+}
+.page-header p {
+  font-size: 1.3rem;
+  color: var(--text-secondary);
+  margin-top: 0.5rem;
+}
+/* --- AJUSTES PARA TELAS MAIORES (TABLETS E DESKTOPS) --- */
+
+.summary-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 4rem;
+}
+
+.summary-card {
+  background: var(--ivory-white);
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: var(--shadow-soft);
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+@media (min-width: 992px) {
+  .summary-cards {
+    /* Força a grade a ter exatamente 4 colunas de tamanho igual */
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.no-indications {
+  padding: 1rem 1.5rem;
+  word-wrap: break-word;
+}
+
+.no-indications h3 {
+  /* Fonte menor para o título em telas pequenas */
+  font-size: 1.7rem;
+}
+
+.no-indications p {
+  /* Fonte menor para o parágrafo em telas pequenas */
+  font-size: 1.1rem;
+}
+
+/* Para o botão específico dentro desta caixa */
+.no-indications .btn-primary {
+  /* Ocupa 100% da largura, ideal para toque em celular */
+  width: 100%;
+  /* Padding mais simples */
+  padding: 1rem;
+  font-size: 1rem;
+  text-align: center;
+}
+
+
+/* --- ESTILOS PARA TELAS MAIORES (TABLETS E DESKTOPS) --- */
+/* Quando a tela for maior que 768px, os estilos abaixo serão aplicados */
+@media (min-width: 768px) {
+  .no-indications {
+    /* Restaura o padding original que fica bom em telas grandes */
+    padding: 4rem 2rem;
+  }
+
+  .no-indications h3 {
+    /* Restaura a fonte original do título */
+    font-size: 2rem;
+  }
+
+  .no-indications p {
+    /* Restaura a fonte original do parágrafo */
+    font-size: 1.2rem;
+  }
+
+  .no-indications .btn-primary {
+    /* Devolve o botão ao seu tamanho original, baseado no conteúdo */
+    width: auto;
+    /* Restaura o padding original do botão */
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+  }
+}
+/* --- OCULTA O BOTÃO EM TELAS MUITO PEQUENAS --- */
+@media (max-width: 377px) {
+  .no-indications .btn-primary {
+    display: none; /* Faz o botão desaparecer */
+  }
+}
+.card-icon {
+  font-size: 2.5rem;
+  color: var(--soft-gold);
+}
+.card-icon.warning {
+  color: #5F7381;
+}
+.card-icon.success {
+  color: var(--success-color);
+}
+.card-icon.error {
+  color: var(--error-color);
+}
+.card-content h3 {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+.card-content span {
+  font-family: var(--heading-font);
+  font-size: 2.5rem;
+  color: var(--dark-teal);
+}
+
+/* --- LISTA DE INDICAÇÕES EM CARDS --- */
+.indications-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.indication-card {
+  background: var(--ivory-white);
+  border-radius: 16px;
+  box-shadow: var(--shadow-soft);
+  transition: box-shadow var(--transition);
+}
+.indication-card:hover {
+  box-shadow: var(--shadow-medium);
+}
+.card-main-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1.5rem;
+  padding: 1.5rem 2rem;
+  align-items: center;
+  cursor: pointer;
+}
+.info-group label {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.25rem;
+  display: block;
+}
+.info-group span {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+.status {
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+.status-aprovada,
+.status-fechada {
+  background-color: #e8f5e9;
+  color: var(--success-color);
+}
+.status-ativa,
+.status-orçamento-enviado {
+  /* Fundo bem claro e cor do texto principal do novo tom */
+  background-color: #eef2f5; 
+  color: #5F7381;
+}
+.status-rejeitada {
+  background-color: #ffebee;
+  color: var(--error-color);
+}
+
+.btn-details {
+  background: none;
+  border: none;
+  font-size: 1rem;
+  color: var(--dark-teal);
+  cursor: pointer;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  justify-self: flex-end;
+}
+.btn-details i {
+  transition: transform 0.4s ease;
+}
+.indication-card.open .btn-details i {
+  transform: rotate(180deg);
+}
+
+.card-details {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.6s ease-in-out, padding 0.6s ease-in-out;
+}
+.details-content {
+  padding: 0 2rem 2rem 2rem;
+  border-top: 1px solid var(--border-color);
+}
+.details-content h4 {
+  font-family: var(--heading-font);
+  font-size: 1.2rem;
+  color: var(--soft-gold);
+  margin: 1.5rem 0 1rem 0;
+}
+.details-content p,
+.details-content li {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+.details-content ul {
+  list-style-position: inside;
+  padding-left: 0;
+}
+.details-content hr {
+  border: none;
+  height: 1px;
+  background-color: var(--border-color);
+  margin: 1rem 0;
+}
+
+.no-indications {
+  text-align: center;
+  padding: 4rem 2rem;
+  background-color: var(--ivory-white);
+  border-radius: 16px;
+  box-shadow: var(--shadow-soft);
+}
+.no-indications i {
+  font-size: 4rem;
+  color: var(--border-color);
+  margin-bottom: 1.5rem;
+}
+.no-indications h3 {
+  font-family: var(--heading-font);
+  font-size: 2rem;
+  color: var(--dark-teal);
+}
+.no-indications p {
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  margin: 1rem 0 2rem 0;
+}
+.btn-primary {
+  background-color: var(--dark-teal);
+  color: var(--ivory-white);
+  padding: 1rem 2.5rem;
+  border: 2px solid var(--dark-teal);
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.1rem;
+  transition: all var(--transition);
+}
+.btn-primary:hover {
+  background-color: var(--soft-gold);
+  border-color: var(--soft-gold);
+  color: var(--dark-teal);
+}
+/* ... (todo o seu CSS anterior permanece o mesmo até aqui) ... */
+
+/* --- LISTA DE INDICAÇÕES EM CARDS --- */
+.indications-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.indication-card {
+  background: var(--ivory-white);
+  border-radius: 16px;
+  box-shadow: var(--shadow-soft);
+  transition: box-shadow var(--transition);
+}
+.indication-card:hover {
+  box-shadow: var(--shadow-medium);
+}
+.card-main-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1.5rem;
+  padding: 1.5rem 2rem;
+  align-items: center;
+  cursor: pointer;
+}
+.info-group label {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.25rem;
+  display: block;
+}
+.info-group span {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+.status {
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+.status-aprovada,
+.status-fechada,
+.status-indicação-boa {
+  background-color: #e8f5e9;
+  color: var(--success-color);
+}
+.status-ativa,
+.status-proposta-enviada {
+  background-color: #fff3e0;
+  color: var(--warning-color);
+}
+.status-rejeitada {
+  background-color: #ffebee;
+  color: var(--error-color);
+}
+.btn-details {
+  background: none;
+  border: none;
+  font-size: 1rem;
+  color: var(--dark-teal);
+  cursor: pointer;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  justify-self: flex-end;
+}
+.btn-details i {
+  transition: transform 0.4s ease;
+}
+.indication-card.open .btn-details i {
+  transform: rotate(180deg);
+}
+
+.card-details {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.6s ease-in-out, padding 0.6s ease-in-out;
+}
+.details-content {
+  padding: 0 2rem 2rem 2rem;
+  border-top: 1px solid var(--border-color);
+}
+.details-content h4 {
+  font-family: var(--heading-font);
+  font-size: 1.2rem;
+  color: var(--soft-gold);
+  margin: 1.5rem 0 1rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.details-content p,
+.details-content li {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+.details-content ul {
+  list-style: none;
+  padding-left: 0;
+}
+.details-content hr {
+  border: none;
+  height: 1px;
+  background-color: var(--border-color);
+  margin: 1rem 0;
+}
+
+/* --- NOVA TABELA DE DETALHES FINANCEIROS --- */
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+}
+.details-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+.details-table th,
+.details-table td {
+  padding: 0.8rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
+}
+.details-table thead {
+  background-color: var(--section-bg);
+}
+.details-table th {
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+}
+.details-table td {
+  font-size: 1rem;
+}
+.details-table tfoot {
+  font-weight: 700;
+}
+.total-row {
+  background-color: var(--section-bg);
+}
+.total-row td {
+  color: var(--dark-teal);
+}
+

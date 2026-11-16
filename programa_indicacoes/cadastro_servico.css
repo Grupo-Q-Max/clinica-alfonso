@@ -1,0 +1,157 @@
+/* --- RAÍZ: TEMA PADRONIZADO "CLÍNICA ALFONSO" --- */
+:root {
+  --dark-teal: #30414b;
+  --ivory-white: #fcfcfc;
+  --soft-gold: #c0b283;
+  --text-primary: #2c2c2c;
+  --text-secondary: #5c5c5c;
+  --section-bg: #f5f7f9;
+  --border-color: #eaeaea;
+  --success-color: #28a745;
+  --danger-color: #dc3545;
+  --heading-font: "Playfair Display", serif;
+  --body-font: "Lato", sans-serif;
+  --shadow-soft: 0 5px 20px rgba(48, 65, 75, 0.07);
+  --shadow-medium: 0 12px 35px rgba(48, 65, 75, 0.1);
+  --transition: 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+/* --- ESTILOS GERAIS --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body.admin-body {
+  font-family: var(--body-font);
+  background-color: var(--section-bg);
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+.main-content {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 2rem 5%;
+  min-height: 100vh;
+  margin-top: 80px; /* Compensa a altura do header fixo */
+}
+
+/* --- CARD DO FORMULÁRIO --- */
+.form-card {
+  width: 100%;
+  max-width: 600px;
+  background-color: var(--ivory-white);
+  padding: 2.5rem;
+  border-radius: 16px;
+  box-shadow: var(--shadow-medium);
+  border: 1px solid var(--border-color);
+}
+.form-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.form-header h1 {
+  font-family: var(--heading-font);
+  color: var(--dark-teal);
+  font-size: clamp(2rem, 4vw, 2.5rem);
+  margin-bottom: 0.5rem;
+}
+.form-header p {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+}
+
+/* --- CAMPOS DO FORMULÁRIO --- */
+.form-group {
+  margin-bottom: 1.5rem;
+}
+.form-group label {
+  display: block;
+  font-weight: 700;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+.form-group input[type="text"] {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  font-family: var(--body-font);
+  font-size: 1rem;
+  color: var(--text-primary);
+  background-color: var(--ivory-white);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  transition: all var(--transition);
+}
+.form-group input[type="text"]:focus {
+  outline: none;
+  border-color: var(--dark-teal);
+  box-shadow: 0 0 0 3px rgba(48, 65, 75, 0.1);
+}
+.form-group input::placeholder {
+  color: #aaa;
+}
+
+/* --- AÇÕES DO FORMULÁRIO (BOTÕES) --- */
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 2rem;
+  border-top: 1px solid var(--border-color);
+  padding-top: 1.5rem;
+}
+
+/* --- BOTÕES PADRÃO --- */
+.btn-primary,
+.btn-secondary {
+  padding: 0.7rem 1.5rem;
+  font-weight: 700;
+  font-size: 0.9rem;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all var(--transition);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.btn-primary {
+  background-color: var(--soft-gold);
+  color: var(--dark-teal);
+}
+.btn-primary:hover {
+  background-color: #a89a71;
+  transform: translateY(-2px);
+}
+.btn-secondary {
+  background-color: transparent;
+  color: var(--text-secondary);
+  border-color: var(--border-color);
+}
+.btn-secondary:hover {
+  background-color: var(--section-bg);
+  border-color: var(--text-secondary);
+}
+
+/* --- ALERTAS DE FEEDBACK --- */
+.alert {
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  border-radius: 8px;
+  font-weight: 700;
+  border: 1px solid transparent;
+  text-align: center;
+}
+.alert.success {
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+  color: #155724;
+}
+.alert.error {
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+  color: #721c24;
+}

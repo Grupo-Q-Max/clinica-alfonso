@@ -1,0 +1,363 @@
+/* --- RAÍZ: TEMA PADRONIZADO "CLÍNICA ALFONSO" --- */
+:root {
+  --dark-teal: #30414b;
+  --ivory-white: #fcfcfc;
+  --soft-gold: #c0b283;
+  --text-primary: #2c2c2c;
+  --text-secondary: #5c5c5c;
+  --section-bg: #f5f7f9;
+  --border-color: #eaeaea;
+  --success-color: #28a745;
+  --danger-color: #dc3545;
+  --warning-color: #ffc107;
+  --heading-font: "Playfair Display", serif;
+  --body-font: "Lato", sans-serif;
+  --shadow-soft: 0 5px 20px rgba(48, 65, 75, 0.07);
+  --shadow-medium: 0 12px 35px rgba(48, 65, 75, 0.1);
+  --transition: 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+/* --- ESTILOS GERAIS E MODO CONVIDADO --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: var(--body-font);
+  background-color: var(--section-bg);
+  color: var(--text-primary);
+}
+body.guest-mode {
+  padding-top: 0;
+} /* Remove padding do header quando em modo convidado */
+.main-content {
+  padding: 3rem 5%;
+}
+
+.guest-welcome-banner {
+  background-color: var(--dark-teal);
+  color: var(--ivory-white);
+  padding: 2rem 5%;
+  text-align: center;
+  box-shadow: var(--shadow-soft);
+}
+.guest-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+.guest-logo {
+  height: 80px;
+  filter: brightness(0) invert(1);
+  margin-bottom: 1rem;
+}
+.guest-content h2 {
+  font-family: var(--heading-font);
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+.guest-content p {
+  font-size: 1.1rem;
+  opacity: 0.9;
+}
+.guest-content strong {
+  color: var(--soft-gold);
+}
+
+/* --- ESTRUTURA DO FORMULÁRIO --- */
+.section-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+.form-wrapper {
+  background-color: var(--ivory-white);
+  border-radius: 16px;
+  box-shadow: var(--shadow-medium);
+  width: 100%;
+  max-width: 800px;
+  overflow: hidden;
+}
+.form-header {
+  text-align: center;
+  padding: 2.5rem 2rem;
+  background-color: var(--dark-teal);
+  color: var(--ivory-white);
+}
+.form-icon {
+  font-size: 2.5rem;
+  color: var(--soft-gold);
+  margin-bottom: 1rem;
+}
+.form-title {
+  font-family: var(--heading-font);
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+.form-subtitle {
+  font-size: 1.1rem;
+  opacity: 0.8;
+}
+.form-body {
+  padding: 2.5rem;
+}
+.form-section-title {
+  font-family: var(--heading-font);
+  color: var(--dark-teal);
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--border-color);
+}
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+/* --- CAMPOS E BOTÕES --- */
+.input-group {
+  display: flex;
+  flex-direction: column;
+}
+.input-group label {
+  font-weight: 700;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+.input-group input,
+.input-group select,
+.input-group textarea {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  font-family: var(--body-font);
+  font-size: 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  transition: all var(--transition);
+}
+.input-group input:focus,
+.input-group select:focus,
+.input-group textarea:focus {
+  outline: none;
+  border-color: var(--dark-teal);
+  box-shadow: 0 0 0 3px rgba(48, 65, 75, 0.1);
+}
+.input-group textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.btn-primary,
+.btn-secondary {
+  padding: 0.8rem 1.5rem;
+  font-weight: 700;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: all var(--transition);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+.btn-primary {
+  background-color: var(--soft-gold);
+  color: var(--dark-teal);
+}
+.btn-primary:hover {
+  background-color: #a89a71;
+  transform: translateY(-2px);
+}
+.btn-secondary {
+  background-color: transparent;
+  color: var(--dark-teal);
+  border-color: var(--border-color);
+}
+.btn-secondary:hover {
+  background-color: var(--section-bg);
+}
+.form-footer {
+  text-align: center;
+  margin-top: 2rem;
+}
+.form-footer .btn-primary {
+  width: 100%;
+  max-width: 300px;
+  font-size: 1.1rem;
+  padding: 1rem;
+}
+
+/* --- CAMPOS DINÂMICOS DE SERVIÇO --- */
+.servicos-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+}
+.servico-item .servico-select-wrapper {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+.remove-servico-btn {
+  background: none;
+  border: none;
+  color: var(--danger-color);
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 5px;
+}
+.outros-servicos-container {
+  margin-top: 0.5rem;
+}
+
+/* --- POP-UPS --- */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(48, 65, 75, 0.7);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: 1rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.popup-overlay.active {
+  display: flex;
+  opacity: 1;
+}
+.popup-content {
+  background: var(--ivory-white);
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: var(--shadow-medium);
+  width: 100%;
+  max-width: 450px;
+  text-align: center;
+  transform: scale(0.9);
+  transition: transform 0.3s ease;
+}
+.popup-overlay.active .popup-content {
+  transform: scale(1);
+}
+.popup-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+.popup-icon .success {
+  color: var(--success-color);
+}
+.popup-icon .error {
+  color: var(--danger-color);
+}
+.popup-icon.warning .fas {
+  color: var(--warning-color);
+}
+.popup-content h2 {
+  font-family: var(--heading-font);
+  color: var(--dark-teal);
+  margin-bottom: 0.5rem;
+}
+.popup-content p {
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+.popup-actions {
+  display: flex;
+  justify-content: center;
+}
+
+/* --- RESPONSIVIDADE PRECISA --- */
+@media (max-width: 768px) {
+  .main-content {
+    padding: 2rem 4%;
+  }
+
+  .form-header {
+    padding: 2rem 1.25rem;
+  }
+
+  .form-title {
+    font-size: 1.85rem;
+  }
+
+  .form-body {
+    padding: 1.8rem 1.25rem;
+  }
+
+  .form-section-title {
+    font-size: 1.3rem;
+  }
+
+  .guest-welcome-banner {
+    padding: 1.5rem 4%;
+  }
+
+  .guest-content h2 {
+    font-size: 1.6rem;
+  }
+
+  .guest-logo {
+    height: 65px;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-content {
+    padding: 1.25rem 3%;
+  }
+
+  .form-header {
+    padding: 1.6rem 1rem;
+  }
+
+  .form-icon {
+    font-size: 2rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .form-title {
+    font-size: 1.5rem;
+  }
+
+  .form-subtitle {
+    font-size: 0.95rem;
+  }
+
+  .form-body {
+    padding: 1.25rem 1rem;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+    gap: 1.1rem;
+    margin-bottom: 1.8rem;
+  }
+
+  .popup-content {
+    padding: 1.5rem 1rem;
+    margin: 1rem;
+  }
+
+  .guest-logo {
+    height: 55px;
+  }
+
+  .guest-content h2 {
+    font-size: 1.35rem;
+  }
+
+  .guest-content p {
+    font-size: 0.95rem;
+  }
+}

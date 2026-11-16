@@ -1,0 +1,258 @@
+/* ================================================================= */
+/* === ARQUIVO CSS DE PERFIL - REATORADO PARA MOBILE-FIRST === */
+/* ================================================================= */
+
+/* --- RAÍZ: TEMA PADRONIZADO "CLÍNICA ALFONSO" --- */
+:root {
+  --dark-teal: #30414b;
+  --ivory-white: #fcfcfc;
+  --soft-gold: #c0b283;
+  --text-primary: #2c2c2c;
+  --text-secondary: #5c5c5c;
+  --section-bg: #f5f7f9;
+  --border-color: #eaeaea;
+  --error-color: #d32f2f;
+  --warning-color: #ed6c02;
+  --success-color: #2e7d32;
+  --heading-font: "Playfair Display", serif;
+  --body-font: "Lato", sans-serif;
+  --shadow-soft: 0 5px 20px rgba(48, 65, 75, 0.07);
+  --shadow-medium: 0 12px 35px rgba(48, 65, 75, 0.1);
+  --transition: 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+/* --- ESTILOS GERAIS (BASE PARA MOBILE) --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: var(--body-font);
+  background-color: var(--section-bg);
+  color: var(--text-primary);
+  font-size: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.profile-main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 5%; /* Padding menor para mobile */
+}
+
+/* --- CABEÇALHO DA PÁGINA (BASE PARA MOBILE) --- */
+.profile-header {
+  display: flex;
+  flex-direction: column; /* Empilhado por padrão */
+  align-items: flex-start; /* Alinhado à esquerda */
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+.profile-header h1 {
+  font-family: var(--heading-font);
+  font-size: clamp(2.2rem, 7vw, 3rem);
+  color: var(--dark-teal);
+}
+.profile-header p {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+}
+.btn-primary {
+  background-color: var(--dark-teal);
+  color: var(--ivory-white);
+  padding: 1rem 2rem;
+  border: 2px solid var(--dark-teal);
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+  transition: all var(--transition);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.btn-primary:hover {
+  background-color: var(--soft-gold);
+  border-color: var(--soft-gold);
+  color: var(--dark-teal);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(192, 178, 131, 0.3);
+}
+
+/* --- CARDS DE INFORMAÇÕES (BASE PARA MOBILE) --- */
+.profile-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+.profile-card {
+  background: var(--ivory-white);
+  padding: 2rem 1.5rem; /* Padding menor para mobile */
+  border-radius: 16px;
+  box-shadow: var(--shadow-soft);
+}
+.section-title {
+  font-family: var(--heading-font);
+  font-size: 1.5rem; /* Fonte menor para mobile */
+  color: var(--dark-teal);
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* UMA coluna por padrão */
+  gap: 1.5rem;
+}
+.info-item {
+  display: flex;
+  flex-direction: column;
+}
+.info-item label {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.25rem;
+}
+.info-item span {
+  font-size: 1.1rem;
+  font-weight: 700;
+  word-wrap: break-word; /* Garante que textos longos quebrem a linha */
+}
+
+/* --- SEÇÃO DE DESATIVAR CONTA (BASE PARA MOBILE) --- */
+.deactivate-section {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-color);
+}
+.deactivate-content {
+  background: var(--ivory-white);
+  padding: 2rem;
+  border-radius: 16px;
+  border: 2px dashed #ffcdd2;
+  display: flex;
+  flex-direction: column; /* Empilhado por padrão */
+  text-align: center;
+  gap: 1rem;
+}
+.deactivate-content p {
+  color: var(--text-secondary);
+}
+.btn-deactivate {
+  background-color: #ef5350;
+  color: white;
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 50px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.btn-deactivate:hover {
+  background-color: #d32f2f;
+  box-shadow: 0 5px 15px rgba(239, 83, 80, 0.4);
+}
+
+/* --- MODAIS --- */
+.modal-overlay {
+  position: fixed; inset: 0; background: rgba(48, 65, 75, 0.6);
+  backdrop-filter: blur(5px); display: none;
+  justify-content: center; align-items: center; z-index: 2000;
+}
+.modal-overlay.active { display: flex; }
+.modal-content {
+  background: var(--ivory-white); padding: 2.5rem;
+  border-radius: 16px; box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+  text-align: center; width: 90%; max-width: 500px;
+}
+.modal-title {
+  font-family: var(--heading-font); font-size: 1.8rem;
+  color: var(--dark-teal); margin-bottom: 1rem;
+}
+.modal-content p { font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 1.5rem; }
+#inputToken {
+  width: 100%; padding: 1rem; border: 2px solid var(--border-color);
+  border-radius: 8px; font-size: 1.5rem; text-align: center;
+  letter-spacing: 0.5rem; margin-bottom: 1.5rem; font-family: var(--body-font);
+}
+.modal-actions { display: flex; justify-content: center; gap: 1rem; margin-top: 1.5rem; }
+.btn-secondary { background-color: #ccc; border: 2px solid #ccc; color: #333; }
+.btn-secondary:hover { background-color: #999; border-color: #999; color: white; transform: translateY(-3px); }
+.spinner-container { display: flex; justify-content: center; align-items: center; gap: 0.5rem; color: var(--text-secondary); margin: 1rem 0; }
+.spinner { width: 20px; height: 20px; border: 3px solid var(--border-color); border-top-color: var(--soft-gold); border-radius: 50%; animation: spin 1s linear infinite; }
+.message-error, .message-success { font-weight: 700; margin: 1rem 0; }
+.message-error { color: var(--error-color); }
+.message-success { color: var(--success-color); }
+.success-title i { color: var(--success-color); }
+.warning-title i { color: var(--warning-color); }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ======================================================= */
+/* === RESPONSIVIDADE - AJUSTES PARA TELAS MAIORES === */
+/* ======================================================= */
+
+/* --- AJUSTES PARA TABLETS E DESKTOPS --- */
+@media (min-width: 768px) {
+  .profile-main {
+    padding: 4rem 5%; /* Restaura padding maior */
+  }
+
+  .profile-header {
+    flex-direction: row; /* Volta para o layout lado a lado */
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .profile-header h1 {
+    font-size: clamp(2.5rem, 5vw, 3.2rem);
+  }
+
+  .profile-header p {
+    font-size: 1.3rem;
+  }
+
+  .profile-card {
+    padding: 3rem; /* Restaura padding maior */
+  }
+
+  .section-title {
+    font-size: 1.8rem; /* Restaura fonte maior */
+  }
+  
+  .info-grid {
+    /* A MÁGICA: cria colunas responsivas, mas com um mínimo seguro para telas médias */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+  
+  .deactivate-section {
+    margin-top: 4rem;
+  }
+  
+  .deactivate-content {
+    flex-direction: row; /* Volta para o layout lado a lado */
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+  }
+  
+  .modal-content {
+    padding: 2.5rem 3rem;
+  }
+  
+  .modal-title {
+    font-size: 2rem;
+  }
+}
