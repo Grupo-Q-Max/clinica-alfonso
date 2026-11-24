@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>Agenda Exclusiva São Sebastião • 28/11 | Dra. Nayara Alfonso</title>
+    <meta name="description" content="Agendamento exclusivo de consultas odontológicas em São Sebastião no dia 28/11. Vagas estritamente limitadas das 08h às 16h com Dra. Nayara Alfonso.">
+    <link rel="icon" type="image/png" href="imagens/favicon.png">
+
+    <!-- Fontes Google (Identidade Oficial Clínica Alfonso) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --dark-teal: #0c1817;
+            --dark-teal-surface: #132422;
+            --dark-teal-card: #182e2c;
+            --soft-gold: #c5a059;
+            --soft-gold-hover: #ddbe7e;
+            --soft-gold-glow: rgba(197, 160, 89, 0.28);
+            --soft-gold-light: rgba(197, 160, 89, 0.12);
+            --ivory-white: #faf9f6;
+            --warm-alabaster: #f4efe6;
+            --text-primary: #1a1a1a;
+            --text-secondary: #5a5a5a;
+            --text-muted: #8c8c8c;
+            --border-color: rgba(197, 160, 89, 0.25);
+            --heading-font: 'Cormorant Garamond', Georgia, serif;
+            --body-font: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+            --radius-md: 12px;
+            --radius-lg: 20px;
+            --shadow-subtle: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --shadow-glow: 0 10px 40px rgba(197, 160, 89, 0.18);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--body-font);
+            background-color: var(--dark-teal);
+            color: var(--ivory-white);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(197, 160, 89, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(197, 160, 89, 0.06) 0%, transparent 50%);
+        }
+
+        /* Top Brand Bar */
+        .brand-header {
+            padding: 24px 20px;
+            text-align: center;
+            border-bottom: 1px solid rgba(197, 160, 89, 0.15);
+            background: rgba(12, 24, 23, 0.85);
+            backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+
+        .brand-header img {
+            height: 48px;
+            width: auto;
+            filter: drop-shadow(0 2px 8px rgba(0,0,0,0.4));
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 40px 20px 80px;
+            flex: 1;
+        }
+
+        /* Hero / Event Banner */
+        .event-hero {
+            text-align: center;
+            margin-bottom: 40px;
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        .event-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--soft-gold-light);
+            border: 1px solid var(--soft-gold);
+            color: var(--soft-gold);
+            padding: 8px 18px;
+            border-radius: 999px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 16px;
+        }
+
+        .event-title {
+            font-family: var(--heading-font);
+            font-size: 2.8rem;
+            font-weight: 600;
+            color: var(--ivory-white);
+            line-height: 1.15;
+            margin-bottom: 12px;
+        }
+
+        .event-title em {
+            font-style: italic;
+            color: var(--soft-gold);
+        }
+
+        .event-subtitle {
+            font-size: 1.05rem;
+            color: rgba(250, 249, 246, 0.75);
+            max-width: 600px;
+            margin: 0 auto;
+            font-weight: 300;
+        }
+
+        /* Info Highlight Cards */
+        .info-grid {
+            display: grid;
+            grid-cols: 1;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+            margin-bottom: 36px;
+        }
+
+        .info-card {
+            background: var(--dark-teal-surface);
+            border: 1px solid var(--border-color);
+            padding: 20px;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .info-card i {
+            font-size: 1.5rem;
+            color: var(--soft-gold);
+            background: rgba(197, 160, 89, 0.1);
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .info-card h4 {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: rgba(250, 249, 246, 0.6);
+            margin-bottom: 4px;
+        }
+
+        .info-card p {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--ivory-white);
+        }
+
+        /* Main Schedule Card */
+        .schedule-box {
+            background: var(--dark-teal-surface);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 36px;
+            box-shadow: var(--shadow-glow);
+            margin-bottom: 30px;
+        }
+
+        .section-header {
+            margin-bottom: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            flex-wrap: wrap;
+            gap: 12px;
+            border-bottom: 1px solid rgba(197, 160, 89, 0.15);
+            padding-bottom: 16px;
+        }
+
+        .section-header h3 {
+            font-family: var(--heading-font);
+            font-size: 1.6rem;
+            color: var(--ivory-white);
+        }
+
+        .section-header p {
+            font-size: 0.85rem;
+            color: rgba(250, 249, 246, 0.6);
+        }
+
+        .slots-legend {
+            display: flex;
+            gap: 16px;
+            font-size: 0.8rem;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .legend-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        .legend-dot.available { background: var(--soft-gold); }
+        .legend-dot.occupied { background: #555; }
+
+        /* Grid of Time Slots */
+        .slots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+            gap: 14px;
+            margin-bottom: 30px;
+        }
+
+        .time-slot {
+            background: var(--dark-teal-card);
+            border: 1px solid rgba(197, 160, 89, 0.2);
+            padding: 16px 12px;
+            border-radius: var(--radius-md);
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .time-slot .time {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--ivory-white);
+            margin-bottom: 4px;
+        }
+
+        .time-slot .status-label {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--soft-gold);
+            font-weight: 600;
+        }
+
+        .time-slot:hover:not(.occupied) {
+            transform: translateY(-3px);
+            border-color: var(--soft-gold);
+            background: rgba(197, 160, 89, 0.15);
+            box-shadow: 0 6px 20px rgba(197, 160, 89, 0.15);
+        }
+
+        .time-slot.selected {
+            background: var(--soft-gold);
+            border-color: var(--soft-gold-hover);
+            box-shadow: 0 0 25px rgba(197, 160, 89, 0.4);
+        }
+
+        .time-slot.selected .time,
+        .time-slot.selected .status-label {
+            color: var(--dark-teal);
+        }
+
+        .time-slot.occupied {
+            background: rgba(255, 255, 255, 0.03);
+            border-color: rgba(255, 255, 255, 0.06);
+            opacity: 0.45;
+            cursor: not-allowed;
+        }
+
+        .time-slot.occupied .status-label {
+            color: #888;
+        }
+
+        /* Form Area */
+        .booking-form {
+            background: rgba(12, 24, 23, 0.6);
+            border: 1px solid rgba(197, 160, 89, 0.2);
+            padding: 24px;
+            border-radius: var(--radius-md);
+            margin-top: 24px;
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .booking-form.active {
+            display: block;
+        }
+
+        .form-selected-badge {
+            background: rgba(197, 160, 89, 0.15);
+            border: 1px solid var(--soft-gold);
+            padding: 10px 16px;
+            border-radius: var(--radius-md);
+            font-size: 0.9rem;
+            color: var(--soft-gold);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        @media (max-width: 640px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            .event-title {
+                font-size: 2.1rem;
+            }
+            .schedule-box {
+                padding: 20px;
+            }
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            margin-bottom: 16px;
+        }
+
+        .form-group label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: rgba(250, 249, 246, 0.85);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            background: var(--dark-teal-card);
+            border: 1px solid rgba(197, 160, 89, 0.3);
+            border-radius: 8px;
+            padding: 12px 14px;
+            color: var(--ivory-white);
+            font-family: inherit;
+            font-size: 0.95rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--soft-gold);
+            box-shadow: 0 0 10px rgba(197, 160, 89, 0.2);
+        }
+
+        .btn-confirm {
+            width: 100%;
+            background: linear-gradient(135deg, var(--soft-gold) 0%, #a67c33 100%);
+            color: var(--dark-teal);
+            border: none;
+            border-radius: 8px;
+            padding: 16px;
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 8px 25px rgba(197, 160, 89, 0.25);
+            margin-top: 8px;
+        }
+
+        .btn-confirm:hover {
+            background: linear-gradient(135deg, var(--soft-gold-hover) 0%, var(--soft-gold) 100%);
+            box-shadow: 0 10px 30px rgba(197, 160, 89, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .btn-confirm:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Success Card */
+        .success-box {
+            display: none;
+            background: var(--dark-teal-surface);
+            border: 1px solid var(--soft-gold);
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            text-align: center;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .success-box.active {
+            display: block;
+        }
+
+        .success-icon {
+            width: 70px;
+            height: 70px;
+            background: rgba(197, 160, 89, 0.15);
+            color: var(--soft-gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 20px;
+            border: 2px solid var(--soft-gold);
+        }
+
+        .success-box h3 {
+            font-family: var(--heading-font);
+            font-size: 2.2rem;
+            color: var(--ivory-white);
+            margin-bottom: 12px;
+        }
+
+        .success-box p {
+            color: rgba(250, 249, 246, 0.8);
+            font-size: 1rem;
+            max-width: 500px;
+            margin: 0 auto 24px;
+        }
+
+        .btn-whatsapp-direct {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #25d366;
+            color: white;
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: all 0.25s;
+        }
+
+        .btn-whatsapp-direct:hover {
+            background: #20ba5a;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Footer */
+        .page-footer {
+            text-align: center;
+            padding: 24px;
+            font-size: 0.8rem;
+            color: rgba(250, 249, 246, 0.4);
+            border-top: 1px solid rgba(197, 160, 89, 0.1);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Brand Header -->
+    <header class="brand-header">
+        <a href="index.html">
+            <img src="imagens/logo_branca.png" alt="Clínica Alfonso Odontologia" onerror="this.onerror=null; this.src='imagens/logo_preta.png';">
+        </a>
+    </header>
+
+    <div class="container">
+        <!-- Hero Section -->
+        <section class="event-hero">
+            <div class="event-badge">
+                <i class="fas fa-gem"></i> Atendimento Exclusivo • Litoral Norte
+            </div>
+            <h1 class="event-title">Agenda São Sebastião • <em>28 de Novembro</em></h1>
+            <p class="event-subtitle">
+                Atendimento odontológico de excelência com a <strong>Dra. Nayara Alfonso</strong>. 
+                Horários estritamente limitados com reserva direta e integração oficial.
+            </p>
+        </section>
+
+        <!-- Cards de Destaque -->
+        <div class="info-grid">
+            <div class="info-card">
+                <i class="far fa-calendar-alt"></i>
+                <div>
+                    <h4>Data Confirmada</h4>
+                    <p>28 de Novembro de 2026</p>
+                </div>
+            </div>
+            <div class="info-card">
+                <i class="fas fa-map-marker-alt"></i>
+                <div>
+                    <h4>Local de Atendimento</h4>
+                    <p>São Sebastião • SP</p>
+                </div>
+            </div>
+            <div class="info-card">
+                <i class="far fa-clock"></i>
+                <div>
+                    <h4>Horários</h4>
+                    <p>Das 08h às 16h (1 vaga/hora)</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Grade de Horários -->
+        <div class="schedule-box" id="scheduleCard">
+            <div class="section-header">
+                <div>
+                    <h3>Escolha o seu Horário</h3>
+                    <p>Selecione um horário vago abaixo para preencher os seus dados e garantir a vaga.</p>
+                </div>
+                <div class="slots-legend">
+                    <div class="legend-item">
+                        <span class="legend-dot available"></span>
+                        <span>Disponível</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-dot occupied"></span>
+                        <span>Reservado</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Grade de Horários Injetada via JavaScript -->
+            <div class="slots-grid" id="slotsGrid">
+                <!-- Carregando dinamicamente -->
+                <div style="grid-column: 1/-1; text-align: center; padding: 30px; color: var(--soft-gold);">
+                    <i class="fas fa-circle-notch fa-spin fa-2x"></i>
+                    <p style="margin-top: 10px; font-size: 0.9rem;">Consultando agenda ao vivo...</p>
+                </div>
+            </div>
+
+            <!-- Formulário de Agendamento (Aparece ao selecionar horário) -->
+            <form class="booking-form" id="bookingForm">
+                <div class="form-selected-badge">
+                    <span><i class="far fa-clock"></i> Horário Selecionado: <strong id="badgeHorario">--:--</strong></span>
+                    <span style="font-size: 0.8rem; font-weight: normal; color: rgba(250,249,246,0.7);">28/11/2026 • São Sebastião</span>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="nome">Nome Completo *</label>
+                        <input type="text" id="nome" name="nome" required placeholder="Ex: Maria da Silva">
+                    </div>
+                    <div class="form-group">
+                        <label for="telefone">WhatsApp / Celular *</label>
+                        <input type="tel" id="telefone" name="telefone" required placeholder="(11) 99999-9999">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" name="email" placeholder="seu@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="observacoes">Procedimento de Interesse / Observações</label>
+                        <input type="text" id="observacoes" name="observacoes" placeholder="Ex: Avaliação, Facetas, Limpeza, Botox...">
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-confirm" id="btnSubmit">
+                    <span>Confirmar Agendamento no Clinicorp</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </form>
+        </div>
+
+        <!-- Tela de Sucesso -->
+        <div class="success-box" id="successBox">
+            <div class="success-icon">
+                <i class="fas fa-check"></i>
+            </div>
+            <h3>Horário Reservado com Sucesso!</h3>
+            <p>
+                Parabéns, <strong id="successNome"></strong>! Seu atendimento com a Dra. Nayara Alfonso para o dia 
+                <strong>28/11 às <span id="successHorario"></span>h</strong> em São Sebastião foi registrado e integrado com a agenda.
+            </p>
+            <a href="#" id="successWhatsappLink" class="btn-whatsapp-direct" target="_blank" rel="noopener">
+                <i class="fab fa-whatsapp"></i>
+                <span>Abrir Confirmação no WhatsApp</span>
+            </a>
+        </div>
+    </div>
+
+    <footer class="page-footer">
+        <p>© 2026 Clínica Alfonso Odontologia & Estética Orofacial • Responsável Técnica: Dra. Nayara Alfonso</p>
+    </footer>
+
+    <script>
+        const API_URL = 'api_agendamento_sao_sebastiao.php';
+        let selectedSlot = null;
+
+        // Máscara de Telefone / WhatsApp
+        const telInput = document.getElementById('telefone');
+        telInput.addEventListener('input', function (e) {
+            let x = e.target.value.replace(/\D/g, '').match(/(\d{0,2})(\d{0,5})(\d{0,4})/);
+            e.target.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
+        });
+
+        // Carrega horários ao vivo
+        async function carregarHorarios() {
+            const grid = document.getElementById('slotsGrid');
+            try {
+                const res = await fetch(API_URL);
+                const data = await res.json();
+
+                if (!data.sucesso) {
+                    grid.innerHTML = '<p style="color: #ff6b6b; grid-column: 1/-1; text-align: center;">Erro ao carregar horários.</p>';
+                    return;
+                }
+
+                grid.innerHTML = '';
+                data.horarios.forEach(slot => {
+                    const el = document.createElement('div');
+                    el.className = `time-slot ${slot.disponivel ? '' : 'occupied'}`;
+                    el.innerHTML = `
+                        <div class="time">${slot.horario}</div>
+                        <div class="status-label">${slot.disponivel ? 'Disponível' : 'Reservado'}</div>
+                    `;
+
+                    if (slot.disponivel) {
+                        el.addEventListener('click', () => selecionarHorario(slot.horario, el));
+                    }
+
+                    grid.appendChild(el);
+                });
+
+            } catch (err) {
+                grid.innerHTML = '<p style="color: #ff6b6b; grid-column: 1/-1; text-align: center;">Falha de comunicação com o servidor.</p>';
+            }
+        }
+
+        function selecionarHorario(horario, element) {
+            document.querySelectorAll('.time-slot').forEach(s => s.classList.remove('selected'));
+            element.classList.add('selected');
+            selectedSlot = horario;
+
+            document.getElementById('badgeHorario').textContent = `${horario}h`;
+            const form = document.getElementById('bookingForm');
+            form.classList.add('active');
+            form.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        // Envio do formulário
+        document.getElementById('bookingForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
+            if (!selectedSlot) {
+                alert('Por favor, selecione um horário vago primeiro.');
+                return;
+            }
+
+            const btn = document.getElementById('btnSubmit');
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Gravando agendamento no Clinicorp...';
+
+            const payload = {
+                horario: selectedSlot,
+                nome: document.getElementById('nome').value,
+                telefone: document.getElementById('telefone').value,
+                email: document.getElementById('email').value,
+                observacoes: document.getElementById('observacoes').value
+            };
+
+            try {
+                const res = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                const data = await res.json();
+
+                if (data.sucesso) {
+                    // Esconde a grade e o form, exibe o cartão de sucesso
+                    document.getElementById('scheduleCard').style.display = 'none';
+                    const success = document.getElementById('successBox');
+                    document.getElementById('successNome').textContent = data.nome;
+                    document.getElementById('successHorario').textContent = data.horario;
+                    document.getElementById('successWhatsappLink').href = data.whatsapp_link;
+                    success.classList.add('active');
+                    success.scrollIntoView({ behavior: 'smooth' });
+                } else {
+                    alert(data.erro || 'Ocorreu um erro ao processar o agendamento.');
+                    btn.disabled = false;
+                    btn.innerHTML = '<span>Confirmar Agendamento no Clinicorp</span> <i class="fas fa-arrow-right"></i>';
+                    carregarHorarios(); // Recarrega para verificar se horário foi pego
+                }
+            } catch (err) {
+                alert('Erro de conexão ao enviar o agendamento.');
+                btn.disabled = false;
+                btn.innerHTML = '<span>Confirmar Agendamento no Clinicorp</span> <i class="fas fa-arrow-right"></i>';
+            }
+        });
+
+        // Inicialização
+        carregarHorarios();
+    </script>
+</body>
+</html>
