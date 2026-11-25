@@ -574,29 +574,30 @@
 
                 <!-- BOTÃO DE ENVIO E BLOQUEIO -->
                 <button type="submit" class="btn-submit-main" id="btnSubmit">
-                    <span>Travar Horário e Ir para o Clinicorp</span>
-                    <i class="fas fa-arrow-right"></i>
+                    <span>Confirmar e Inserir na Agenda</span>
+                    <i class="fas fa-check-circle"></i>
                 </button>
             </form>
         </div>
 
-        <!-- TELA DE SUCESSO E REDIRECIONAMENTO AUTOMÁTICO -->
+        <!-- TELA DE SUCESSO -->
         <div class="booking-card success-overlay" id="successScreen">
             <div class="success-badge">
                 <i class="fas fa-calendar-check"></i>
             </div>
-            <h3>Horário Bloqueado com Sucesso!</h3>
+            <h3>Consulta Agendada com Sucesso!</h3>
             <p>
-                Olá, <strong id="resNome"></strong>! Seu atendimento no dia <strong>28/11 às <span id="resHorario"></span>h</strong> em São Sebastião foi registrado no sistema e a vaga foi travada para você.
+                Parabéns, <strong id="resNome"></strong>! Seu atendimento com a Dra. Nayara Alfonso no dia 
+                <strong>28/11 às <span id="resHorario"></span>h</strong> em São Sebastião foi registrado e inserido diretamente no calendário da clínica.
             </p>
 
-            <div class="redirect-countdown" id="countdownBox">
-                Redirecionando para o Clinicorp em <span id="countNum">3</span> segundos...
+            <div class="redirect-countdown">
+                <i class="far fa-check-circle"></i> Vaga bloqueada exclusivamente para você no dia 28/11
             </div>
             <br>
-            <a href="https://agenda.link/92198" id="btnClinicorpDirect" class="btn-direct-clinicorp" target="_blank" rel="noopener">
-                <span>Acessar Agenda Oficial Clinicorp Agora</span>
-                <i class="fas fa-external-link-alt"></i>
+            <a href="#" id="btnWhatsappDirect" class="btn-direct-clinicorp" target="_blank" rel="noopener" style="background: #25d366; color: white;">
+                <i class="fab fa-whatsapp" style="font-size: 1.3rem;"></i>
+                <span>Enviar Confirmação pelo WhatsApp</span>
             </a>
         </div>
     </div>
@@ -690,21 +691,9 @@
                     const screen = document.getElementById('successScreen');
                     document.getElementById('resNome').textContent = data.nome;
                     document.getElementById('resHorario').textContent = data.horario;
+                    document.getElementById('btnWhatsappDirect').href = data.whatsapp_link;
                     screen.classList.add('active');
                     screen.scrollIntoView({ behavior: 'smooth' });
-
-                    // Contagem regressiva e Redirecionamento Automático para o Clinicorp
-                    let seconds = 3;
-                    const countElem = document.getElementById('countNum');
-                    const timer = setInterval(() => {
-                        seconds--;
-                        countElem.textContent = seconds;
-                        if (seconds <= 0) {
-                            clearInterval(timer);
-                            window.location.href = 'https://agenda.link/92198';
-                        }
-                    }, 1000);
-
                 } else {
                     alert(data.erro || 'Ocorreu um erro ao reservar.');
                     btn.disabled = false;
