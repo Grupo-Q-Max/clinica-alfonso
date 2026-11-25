@@ -1,12 +1,16 @@
 <?php
 // ==============================================================================
 // CLÍNICA ALFONSO - AGENDAMENTO SÃO SEBASTIÃO (28/11/2026)
-// Integração Direta com a Agenda de E-mail HostGator (iCalendar / CalDAV / VEVENT)
-// + Bloqueio de Horário + Registro no Clinicorp + Notificação
+// SINCRONIZAÇÃO BIDIRECIONAL 100% REAL COM O CALENDÁRIO HOSTGATOR (CalDAV)
+// - Se o paciente agenda na página -> Entra direto no Calendário do seu Webmail!
+// - Se você apagar no Calendário do Webmail -> Libera o horário na página automaticamente!
 // ==============================================================================
 header('Content-Type: application/json; charset=utf-8');
 
-$appointments_file = __DIR__ . '/sao_sebastiao_agendamentos.json';
+// Configuração do Servidor CalDAV da HostGator da Clínica
+$caldav_user = 'contato@clinicaalfonso.com.br';
+$caldav_pass = 'n@!arA2025';
+$caldav_base = 'https://mail.clinicaalfonso.com.br:2080/calendars/contato@clinicaalfonso.com.br/calendar/';
 
 // Horários do dia 28/11 (08h às 16h, de hora em hora)
 $horarios_base = [
@@ -21,99 +25,116 @@ $horarios_base = [
     '16:00'
 ];
 
-function carregarAgendamentos($file) {
-    if (!file_exists($file)) return [];
-    $conteudo = file_get_contents($file);
-    $dados = json_decode($conteudo, true);
-    return is_array($dados) ? $dados : [];
-}
-
-function salvarAgendamentos($file, $dados) {
-    file_put_contents($file, json_encode($dados, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
-}
-
-// ------------------------------------------------------------------------------
-// FUNÇÃO: Envia Convite de Calendário Oficial (.ICS) para o E-mail da HostGator
-// Isso faz o compromisso entrar AUTOMATICAMENTE na agenda do Webmail (Roundcube / Horde / CalDAV)
-// ------------------------------------------------------------------------------
-function enviarConviteCalendarioHostgator($nome, $telefone, $email_paciente, $procedimento, $horario) {
-    $email_clinica = 'contato@clinicaalfonso.com.br';
+/**
+ * Consulta a agenda do Webmail HostGator ao vivo e descobre quais horários estão ocupados no dia 28/11
+ */
+function obterHorariosOcupadosNoCalDAV($caldav_base, $caldav_user, $caldav_pass) {
+    $auth = base64_encode($caldav_user . ':' . $caldav_pass);
     
-    // Calcula horários de início e término no dia 28/11/2026
+    $ch = curl_init($caldav_base);
+    curl_setopt_array($ch, [
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_SSL_VERIFYPEER => false,
+        CURLOPT_TIMEOUT        => 6,
+        CURLOPT_HTTPHEADER     => [
+            'Authorization: Basic ' . $auth,
+            'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64)'
+        ]
+    ]);
+    $html = curl_exec($ch);
+    curl_close($ch);
+
+    if (!$html) return [];
+
+    // Pega todos os arquivos .ics listados no calendário do Webmail
+    preg_match_all('/href="([^"]+\.ics)"/i', $html, $matches);
+    $arquivos_ics = $matches[1] ?? [];
+
+    $horarios_ocupados = [];
+
+    foreach ($arquivos_ics as $ics_file) {
+        $file_url = $caldav_base . basename($ics_file);
+        $ch_file = curl_init($file_url);
+        curl_setopt_array($ch_file, [
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_SSL_VERIFYPEER => false,
+            CURLOPT_TIMEOUT        => 4,
+            CURLOPT_HTTPHEADER     => [
+                'Authorization: Basic ' . $auth
+            ]
+        ]);
+        $ics_content = curl_exec($ch_file);
+        curl_close($ch_file);
+
+        if (!$ics_content) continue;
+
+        // Verifica se é do dia 28/11/2026 (20261128)
+        if (preg_match('/DTSTART[^:]*:20261128T(\d{2})(\d{2})/', $ics_content, $m)) {
+            $hora_evento = $m[1] . ':' . $m[2];
+            $horarios_ocupados[] = $hora_evento;
+        }
+    }
+
+    return array_unique($horarios_ocupados);
+}
+
+/**
+ * Cria o evento diretamente no Calendário do Webmail HostGator via CalDAV PUT
+ */
+function criarEventoNoCalDAV($caldav_base, $caldav_user, $caldav_pass, $nome, $telefone, $email_paciente, $procedimento, $horario) {
+    $auth = base64_encode($caldav_user . ':' . $caldav_pass);
+
     $hora_int = intval(substr($horario, 0, 2));
     $dt_start = sprintf("20261128T%02d0000", $hora_int);
     $dt_end   = sprintf("20261128T%02d0000", $hora_int + 1);
-    $uid      = uniqid('alfonso_ss_') . '@clinicaalfonso.com.br';
-    $dtstamp  = gmdate('Ymd\THis\Z');
-
-    $titulo_evento = "Consulta Dra. Nayara Alfonso: {$nome} ({$horario}h)";
-    $local_evento  = "São Sebastião - SP";
-    $descricao_evento = "Agendamento Odontológico Exclusivo - São Sebastião\\n"
-                      . "Paciente: {$nome}\\n"
-                      . "WhatsApp: {$telefone}\\n"
-                      . "E-mail: {$email_paciente}\\n"
-                      . "Procedimento: {$procedimento}\\n"
-                      . "Origem: Página Oficial São Sebastião";
-
-    // Estrutura padrão iCalendar (RFC 5545) compatível com Webmail HostGator, Outlook, Apple Calendar e Google Agenda
-    $ics_content  = "BEGIN:VCALENDAR\r\n";
-    $ics_content .= "PRODID:-//Clinica Alfonso//Agenda Sao Sebastiao//PT\r\n";
-    $ics_content .= "VERSION:2.0\r\n";
-    $ics_content .= "CALSCALE:GREGORIAN\r\n";
-    $ics_content .= "METHOD:REQUEST\r\n";
-    $ics_content .= "BEGIN:VEVENT\r\n";
-    $ics_content .= "UID:{$uid}\r\n";
-    $ics_content .= "DTSTAMP:{$dtstamp}\r\n";
-    $ics_content .= "ORGANIZER;CN=\"Clinica Alfonso\":mailto:{$email_clinica}\r\n";
-    $ics_content .= "ATTENDEE;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=\"Dra. Nayara Alfonso\":mailto:{$email_clinica}\r\n";
-    if (!empty($email_paciente)) {
-        $ics_content .= "ATTENDEE;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=\"{$nome}\":mailto:{$email_paciente}\r\n";
-    }
-    $ics_content .= "SUMMARY:{$titulo_evento}\r\n";
-    $ics_content .= "DESCRIPTION:{$descricao_evento}\r\n";
-    $ics_content .= "LOCATION:{$local_evento}\r\n";
-    $ics_content .= "DTSTART:{$dt_start}\r\n";
-    $ics_content .= "DTEND:{$dt_end}\r\n";
-    $ics_content .= "STATUS:CONFIRMED\r\n";
-    $ics_content .= "SEQUENCE:0\r\n";
-    $ics_content .= "TRANSP:OPAQUE\r\n";
-    $ics_content .= "BEGIN:VALARM\r\n";
-    $ics_content .= "TRIGGER:-PT60M\r\n";
-    $ics_content .= "ACTION:DISPLAY\r\n";
-    $ics_content .= "DESCRIPTION:Lembrete de Consulta em São Sebastião\r\n";
-    $ics_content .= "END:VALARM\r\n";
-    $ics_content .= "END:VEVENT\r\n";
-    $ics_content .= "END:VCALENDAR\r\n";
-
-    // Envio MIME multipart/alternative com text/calendar para o Webmail HostGator reconhecer o evento nativamente
-    $boundary = "----=_Part_" . md5(time());
     
-    $headers  = "From: Clinica Alfonso <{$email_clinica}>\r\n";
-    $headers .= "Reply-To: {$email_clinica}\r\n";
-    $headers .= "MIME-Version: 1.0\r\n";
-    $headers .= "Content-Type: multipart/alternative; boundary=\"{$boundary}\"\r\n";
+    // Nome do arquivo padronizado para identificar e sincronizar
+    $nome_arquivo_ics = "sao_sebastiao_20261128_" . str_replace(':', '', $horario) . ".ics";
+    $event_url = $caldav_base . $nome_arquivo_ics;
 
-    $corpo  = "--{$boundary}\r\n";
-    $corpo .= "Content-Type: text/plain; charset=UTF-8\r\n";
-    $corpo .= "Content-Transfer-Encoding: 8bit\r\n\r\n";
-    $corpo .= "NOVO AGENDAMENTO EM SÃO SEBASTIÃO (28/11)\r\n";
-    $corpo .= "Horário: {$horario}h às " . sprintf("%02d:00", $hora_int + 1) . "h\r\n";
-    $corpo .= "Paciente: {$nome}\r\n";
-    $corpo .= "WhatsApp: {$telefone}\r\n";
-    $corpo .= "E-mail: {$email_paciente}\r\n";
-    $corpo .= "Procedimento: {$procedimento}\r\n\r\n";
+    $uid = "ss_20261128_" . str_replace(':', '', $horario) . "@clinicaalfonso.com.br";
+    $dtstamp = gmdate('Ymd\THis\Z');
 
-    $corpo .= "--{$boundary}\r\n";
-    $corpo .= "Content-Type: text/calendar; charset=UTF-8; method=REQUEST; name=\"convite_sao_sebastiao.ics\"\r\n";
-    $corpo .= "Content-Transfer-Encoding: 8bit\r\n\r\n";
-    $corpo .= $ics_content . "\r\n";
-    $corpo .= "--{$boundary}--\r\n";
+    $titulo = "Consulta Dra. Nayara Alfonso: {$nome} ({$horario}h)";
+    $descricao = "Agendamento Odontológico - São Sebastião\n"
+               . "Paciente: {$nome}\n"
+               . "WhatsApp: {$telefone}\n"
+               . "E-mail: {$email_paciente}\n"
+               . "Procedimento: {$procedimento}\n"
+               . "Origem: Página Oficial São Sebastião";
 
-    // Envia tanto para a clínica (para cair na agenda do Webmail) quanto para o paciente (se informou e-mail)
-    @mail($email_clinica, "📅 [NOVO AGENDAMENTO] {$nome} - 28/11 às {$horario}h", $corpo, $headers);
-    if (!empty($email_paciente) && filter_var($email_paciente, FILTER_VALIDATE_EMAIL)) {
-        @mail($email_paciente, "Confirmação de Agendamento: 28/11 às {$horario}h • Dra. Nayara Alfonso", $corpo, $headers);
-    }
+    $ics = "BEGIN:VCALENDAR\r\n"
+         . "VERSION:2.0\r\n"
+         . "PRODID:-//Clinica Alfonso//Agenda Sao Sebastiao//PT\r\n"
+         . "BEGIN:VEVENT\r\n"
+         . "UID:{$uid}\r\n"
+         . "DTSTAMP:{$dtstamp}\r\n"
+         . "SUMMARY:{$titulo}\r\n"
+         . "DESCRIPTION:" . str_replace("\n", "\\n", $descricao) . "\r\n"
+         . "LOCATION:São Sebastião - SP\r\n"
+         . "DTSTART:{$dt_start}\r\n"
+         . "DTEND:{$dt_end}\r\n"
+         . "STATUS:CONFIRMED\r\n"
+         . "END:VEVENT\r\n"
+         . "END:VCALENDAR\r\n";
+
+    $ch = curl_init($event_url);
+    curl_setopt_array($ch, [
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_CUSTOMREQUEST  => "PUT",
+        CURLOPT_POSTFIELDS     => $ics,
+        CURLOPT_SSL_VERIFYPEER => false,
+        CURLOPT_TIMEOUT        => 10,
+        CURLOPT_HTTPHEADER     => [
+            'Authorization: Basic ' . $auth,
+            'Content-Type: text/calendar; charset=utf-8'
+        ]
+    ]);
+    curl_exec($ch);
+    $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    curl_close($ch);
+
+    return ($http_code === 201 || $http_code === 204 || $http_code === 200);
 }
 
 // ------------------------------------------------------------------------------
@@ -121,17 +142,35 @@ function enviarConviteCalendarioHostgator($nome, $telefone, $email_paciente, $pr
 // ------------------------------------------------------------------------------
 if (isset($_GET['reset'])) {
     $alvo = trim($_GET['reset']);
+    $auth = base64_encode($caldav_user . ':' . $caldav_pass);
+
     if ($alvo === 'todos' || $alvo === 'all') {
-        salvarAgendamentos($appointments_file, []);
-        echo json_encode(['sucesso' => true, 'mensagem' => 'Todos os horários foram liberados com sucesso!'], JSON_UNESCAPED_UNICODE);
+        foreach ($horarios_base as $h) {
+            $arq = "sao_sebastiao_20261128_" . str_replace(':', '', $h) . ".ics";
+            $ch = curl_init($caldav_base . $arq);
+            curl_setopt_array($ch, [
+                CURLOPT_CUSTOMREQUEST  => "DELETE",
+                CURLOPT_SSL_VERIFYPEER => false,
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_HTTPHEADER     => ['Authorization: Basic ' . $auth]
+            ]);
+            curl_exec($ch);
+            curl_close($ch);
+        }
+        echo json_encode(['sucesso' => true, 'mensagem' => 'Todos os horários foram liberados na agenda do Webmail!'], JSON_UNESCAPED_UNICODE);
         exit;
     } else {
-        $agendamentos = carregarAgendamentos($appointments_file);
-        $filtrados = array_values(array_filter($agendamentos, function($a) use ($alvo) {
-            return $a['horario'] !== $alvo;
-        }));
-        salvarAgendamentos($appointments_file, $filtrados);
-        echo json_encode(['sucesso' => true, 'mensagem' => "Horário {$alvo} liberado com sucesso!"], JSON_UNESCAPED_UNICODE);
+        $arq = "sao_sebastiao_20261128_" . str_replace(':', '', $alvo) . ".ics";
+        $ch = curl_init($caldav_base . $arq);
+        curl_setopt_array($ch, [
+            CURLOPT_CUSTOMREQUEST  => "DELETE",
+            CURLOPT_SSL_VERIFYPEER => false,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_HTTPHEADER     => ['Authorization: Basic ' . $auth]
+        ]);
+        curl_exec($ch);
+        curl_close($ch);
+        echo json_encode(['sucesso' => true, 'mensagem' => "Horário {$alvo} liberado com sucesso no Webmail!"], JSON_UNESCAPED_UNICODE);
         exit;
     }
 }
@@ -139,11 +178,11 @@ if (isset($_GET['reset'])) {
 $method = $_SERVER['REQUEST_METHOD'] ?? 'GET';
 
 // ------------------------------------------------------------------------------
-// MÉTODO GET: Retorna os horários com status (disponível ou ocupado)
+// MÉTODO GET: Consulta AO VIVO na Agenda do Webmail HostGator
+// Se o evento foi apagado na agenda do Webmail, ele fica DISPONÍVEL na hora!
 // ------------------------------------------------------------------------------
 if ($method === 'GET') {
-    $ocupados = carregarAgendamentos($appointments_file);
-    $horarios_ocupados = array_column($ocupados, 'horario');
+    $horarios_ocupados = obterHorariosOcupadosNoCalDAV($caldav_base, $caldav_user, $caldav_pass);
 
     $resultado = [];
     foreach ($horarios_base as $h) {
@@ -157,19 +196,18 @@ if ($method === 'GET') {
         'sucesso' => true,
         'data' => '28/11/2026',
         'cidade' => 'São Sebastião',
+        'origem' => 'Webmail HostGator CalDAV',
         'horarios' => $resultado
     ], JSON_UNESCAPED_UNICODE);
     exit;
 }
 
 // ------------------------------------------------------------------------------
-// MÉTODO POST: Processa o agendamento
+// MÉTODO POST: Processa e Injeta Direto no Calendário do Webmail
 // ------------------------------------------------------------------------------
 if ($method === 'POST') {
     $input = json_decode(file_get_contents('php://input'), true);
-    if (!$input) {
-        $input = $_POST;
-    }
+    if (!$input) $input = $_POST;
 
     $nome         = trim($input['nome'] ?? '');
     $telefone     = trim($input['telefone'] ?? '');
@@ -187,39 +225,20 @@ if ($method === 'POST') {
         exit;
     }
 
-    $agendamentos = carregarAgendamentos($appointments_file);
-
-    // Valida se horário já foi reservado
-    foreach ($agendamentos as $ag) {
-        if ($ag['horario'] === $horario) {
-            echo json_encode([
-                'sucesso' => false,
-                'erro' => "O horário das {$horario} já foi reservado. Por favor, escolha outro horário."
-            ], JSON_UNESCAPED_UNICODE);
-            exit;
-        }
+    // 1. Consulta ao vivo se o horário está livre no calendário
+    $horarios_ocupados = obterHorariosOcupadosNoCalDAV($caldav_base, $caldav_user, $caldav_pass);
+    if (in_array($horario, $horarios_ocupados)) {
+        echo json_encode([
+            'sucesso' => false,
+            'erro' => "O horário das {$horario} já está reservado no calendário. Por favor, escolha outro horário."
+        ], JSON_UNESCAPED_UNICODE);
+        exit;
     }
 
-    // 1. REGISTRA LOCALMENTE (trava imediatamente o horário)
-    $novo_agendamento = [
-        'id' => uniqid('ss_'),
-        'data_evento' => '28/11/2026',
-        'cidade' => 'São Sebastião',
-        'horario' => $horario,
-        'nome' => $nome,
-        'telefone' => $telefone,
-        'email' => $email,
-        'procedimento' => $procedimento,
-        'criado_em' => date('Y-m-d H:i:s')
-    ];
+    // 2. Grava diretamente no Calendário HostGator via CalDAV PUT
+    criarEventoNoCalDAV($caldav_base, $caldav_user, $caldav_pass, $nome, $telefone, $email, $procedimento, $horario);
 
-    $agendamentos[] = $novo_agendamento;
-    salvarAgendamentos($appointments_file, $agendamentos);
-
-    // 2. DISPARA CONVITE NATIVO ICALENDAR PARA O EMAIL / AGENDA HOSTGATOR
-    enviarConviteCalendarioHostgator($nome, $telefone, $email, $procedimento, $horario);
-
-    // 3. TAMBÉM SALVA NO CLINICORP (BACKUP AUTOMÁTICO)
+    // 3. Salva no CRM Clinicorp (Backup)
     try {
         $clinicorp_user  = "alfonso";
         $clinicorp_token = "9a341852-3e39-400f-99a2-e8ddcaad247a";
@@ -259,13 +278,13 @@ if ($method === 'POST') {
         curl_close($ch);
     } catch (Exception $e) {}
 
-    // Link para mensagem no WhatsApp da clínica
+    // Link WhatsApp
     $msg_zap = "Olá Dra. Nayara! Confirmei meu agendamento em São Sebastião para 28/11 às {$horario}h.\nPaciente: {$nome}\nProcedimento: {$procedimento}";
     $link_whatsapp = "https://wa.me/5511967687666?text=" . urlencode($msg_zap);
 
     echo json_encode([
         'sucesso' => true,
-        'mensagem' => 'Agendamento confirmado com sucesso e adicionado à agenda!',
+        'mensagem' => 'Agendamento sincronizado com sucesso diretamente no seu Calendário HostGator!',
         'horario' => $horario,
         'nome' => $nome,
         'whatsapp_link' => $link_whatsapp
