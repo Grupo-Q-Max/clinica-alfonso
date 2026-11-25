@@ -36,6 +36,26 @@ function salvarAgendamentos($file, $dados) {
 $method = $_SERVER['REQUEST_METHOD'] ?? 'GET';
 
 // ------------------------------------------------------------------------------
+// COMANDO DE RESET / LIBERAÇÃO (Ex: ?reset=08:00 ou ?reset=todos)
+// ------------------------------------------------------------------------------
+if (isset($_GET['reset'])) {
+    $alvo = trim($_GET['reset']);
+    if ($alvo === 'todos' || $alvo === 'all') {
+        salvarAgendamentos($appointments_file, []);
+        echo json_encode(['sucesso' => true, 'mensagem' => 'Todos os horários foram liberados com sucesso!'], JSON_UNESCAPED_UNICODE);
+        exit;
+    } else {
+        $agendamentos = carregarAgendamentos($appointments_file);
+        $filtrados = array_values(array_filter($agendamentos, function($a) use ($alvo) {
+            return $a['horario'] !== $alvo;
+        }));
+        salvarAgendamentos($appointments_file, $filtrados);
+        echo json_encode(['sucesso' => true, 'mensagem' => "Horário {$alvo} liberado com sucesso!"], JSON_UNESCAPED_UNICODE);
+        exit;
+    }
+}
+
+// ------------------------------------------------------------------------------
 // MÉTODO GET: Retorna os horários com status (disponível ou ocupado)
 // ------------------------------------------------------------------------------
 if ($method === 'GET') {
