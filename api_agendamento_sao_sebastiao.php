@@ -7,10 +7,10 @@
 // ==============================================================================
 header('Content-Type: application/json; charset=utf-8');
 
-// Configuração do Servidor CalDAV da HostGator da Clínica
-$caldav_user = 'contato@clinicaalfonso.com.br';
+// Configuração do Servidor CalDAV da HostGator da Clínica (Dra. Nayara Alfonso)
+$caldav_user = 'dranayara@clinicaalfonso.com.br';
 $caldav_pass = 'n@!arA2025';
-$caldav_base = 'https://mail.clinicaalfonso.com.br:2080/calendars/contato@clinicaalfonso.com.br/calendar/';
+$caldav_base = 'https://mail.clinicaalfonso.com.br:2080/calendars/dranayara@clinicaalfonso.com.br/calendar/';
 
 // Horários do dia 28/11 (08h às 16h, de hora em hora)
 $horarios_base = [
